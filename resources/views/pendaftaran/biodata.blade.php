@@ -254,12 +254,12 @@
                                 <div class="row">
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">NIK</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="NIK"
+                                        <input type="number" class="form-control form-control-solid" placeholder="NIK"
                                             name="nik_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">NISN</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="NISN"
+                                        <input type="number" class="form-control form-control-solid" placeholder="NISN"
                                             name="nisn_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
@@ -276,7 +276,7 @@
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid"
                                             value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal Lahir"
-                                            name="tanggal_lahir_biodata" id="tanggal_lahir" />
+                                            name="tanggal_lahir_biodata" id="tanggal_lahir_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Jenis Kelamin</label>
@@ -291,17 +291,17 @@
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Jumlah Saudara</label>
-                                        <input type="text" class="form-control form-control-solid"
+                                        <input type="number" class="form-control form-control-solid"
                                             placeholder="Jumlah Saudara" name="jumlah_saudara_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Anak Ke</label>
-                                        <input type="text" class="form-control form-control-solid"
+                                        <input type="number" class="form-control form-control-solid"
                                             placeholder="Anak Ke" name="anak_ke_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Dari</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Dari"
+                                        <input type="number" class="form-control form-control-solid" placeholder="Dari"
                                             name="dari_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
@@ -332,12 +332,12 @@
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Berat Badan</label>
-                                        <input type="text" class="form-control form-control-solid"
+                                        <input type="number" class="form-control form-control-solid"
                                             placeholder="Berat Badan" name="berat_badan_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tinggi Badan</label>
-                                        <input type="text" class="form-control form-control-solid"
+                                        <input type="number" class="form-control form-control-solid"
                                             placeholder="Tinggi Badan" name="tinggi_badan_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
@@ -462,6 +462,7 @@
             });
             $("#tanggal_lahir_ayah").flatpickr();
             $("#tanggal_lahir_ibu").flatpickr();
+            $("#tanggal_lahir_biodata").flatpickr();
             var element = document.querySelector("#kt_stepper_example_basic");
 
             // Initialize Stepper

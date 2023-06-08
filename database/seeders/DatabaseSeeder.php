@@ -14,6 +14,7 @@ use App\Models\Soal;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +29,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make(1234567890),
             'role' => Role::ADMIN,
         ]);
+        foreach (Storage::allDirectories('public') as $directory) {
+            Storage::deleteDirectory($directory);
+        }
         Siswa::factory(10)->create();
         SiswaDokumen::factory(10)->create();
         SiswaIdentitas::factory(10)->create();

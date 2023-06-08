@@ -11,7 +11,7 @@ class SiswaOrangTua extends Model
 
     protected $table = 'siswa_orang_tua';
 
-    protected $fillble = [
+    protected $fillable = [
         'siswa_id',
         'nama_ayah',
         'tempat_lahir_ayah',

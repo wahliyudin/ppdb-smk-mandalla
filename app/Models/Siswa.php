@@ -17,4 +17,29 @@ class Siswa extends Model
         'tgl_lahir',
         'tempat_lahir',
     ];
+
+    public function orangTua()
+    {
+        return $this->hasOne(SiswaOrangTua::class, 'siswa_id', 'id');
+    }
+
+    public function dokumen()
+    {
+        return $this->hasOne(SiswaDokumen::class, 'siswa_id', 'id');
+    }
+
+    public function identitas()
+    {
+        return $this->hasOne(SiswaIdentitas::class, 'siswa_id', 'id');
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasOne(SiswaPembayaran::class, 'siswa_id', 'id');
+    }
+
+    public function tesOnline()
+    {
+        return $this->hasOne(SiswaTesOnline::class, 'siswa_id', 'id');
+    }
 }
