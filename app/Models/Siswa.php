@@ -12,6 +12,7 @@ class Siswa extends Model
     protected $table = 'siswa';
 
     protected $fillable = [
+        'user_id',
         'nama',
         'jenis_kelamin',
         'tgl_lahir',
@@ -41,5 +42,10 @@ class Siswa extends Model
     public function tesOnline()
     {
         return $this->hasOne(SiswaTesOnline::class, 'siswa_id', 'id');
+    }
+
+    public function proses()
+    {
+        return $this->hasMany(Proses::class, 'siswa_id', 'id');
     }
 }

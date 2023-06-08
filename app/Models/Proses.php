@@ -12,6 +12,7 @@ class Proses extends Model
     use HasFactory;
 
     protected $fillable = [
+        'siswa_id',
         'proses',
         'status',
     ];

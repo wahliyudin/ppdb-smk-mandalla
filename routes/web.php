@@ -3,6 +3,7 @@
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\Proses\CalonSiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,10 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
         Route::post('pendaftaran/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+    });
+
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('calon-siswa', [CalonSiswaController::class, 'index'])->name('calon-siswa.index');
+        Route::post('calon-siswa/datatable', [CalonSiswaController::class, 'datatable'])->name('calon-siswa.datatable');
     });
 });

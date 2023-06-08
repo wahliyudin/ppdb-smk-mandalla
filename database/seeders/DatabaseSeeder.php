@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         foreach (Storage::allDirectories('public') as $directory) {
             Storage::deleteDirectory($directory);
         }
+        User::factory(10)->create();
         Siswa::factory(10)->create();
         SiswaDokumen::factory(10)->create();
         SiswaIdentitas::factory(10)->create();

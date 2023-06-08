@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('proses', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_siswa');
+            $table->unsignedBigInteger('siswa_id');
             $table->enum('proses', [1, 2, 3]);
             $table->enum('status', [1, 2, 3]);
             $table->timestamps();
+
+            $table->foreign('siswa_id')->references('id')->on('siswa')->cascadeOnDelete();
         });
     }
 

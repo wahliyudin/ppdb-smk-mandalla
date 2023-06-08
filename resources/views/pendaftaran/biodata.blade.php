@@ -737,7 +737,7 @@
                             }
                         }).then(function(result) {
                             if (result.isConfirmed) {
-                                // location.reload();
+                                window.location.href = "/biodata";
                             }
                         });
                     },

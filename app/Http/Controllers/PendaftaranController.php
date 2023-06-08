@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Proses\Proses as ProsesProses;
+use App\Enums\Proses\Status;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -17,14 +19,17 @@ class PendaftaranController extends Controller
     public function store(Request $request)
     {
         try {
-            $siswa = Siswa::query()->create([
+            $siswa = Siswa::query()->updateOrCreate([
+                'user_id' => auth()->user()?->id,
+            ], [
+                'user_id' => auth()->user()?->id,
                 'nama' => $request->nama_biodata,
                 'jenis_kelamin' => $request->jenis_kelamin_biodata,
                 'tgl_lahir' => $request->tanggal_lahir_biodata,
                 'tempat_lahir' => $request->tempat_lahir_biodata,
             ]);
 
-            $siswa->orangTua()->create([
+            $siswa->orangTua()->updateOrCreate([
                 'nama_ayah' => $request->nama_ayah,
                 'tempat_lahir_ayah' => $request->tempat_lahir_ayah,
                 'email_ayah' => $request->email_ayah,
@@ -56,9 +61,9 @@ class PendaftaranController extends Controller
                 $data['kks'] = $this->storeFile($request->file('kks_file'));
             }
 
-            $siswa->dokumen()->create($data);
+            $siswa->dokumen()->updateOrCreate($data);
 
-            $siswa->identitas()->create([
+            $siswa->identitas()->updateOrCreate([
                 'nisn' => $request->nisn_biodata,
                 'nik' => $request->nik_biodata,
                 'jumlah_saudara' => $request->jumlah_saudara_biodata,
@@ -70,6 +75,11 @@ class PendaftaranController extends Controller
                 'berat_badan' => $request->berat_badan_biodata,
                 'tinggi_badan' => $request->tinggi_badan_biodata,
                 'riwayat_penyakit' => $request->riwayat_penyakit_biodata,
+            ]);
+
+            $siswa->proses()->create([
+                'proses' => ProsesProses::DOKUMEN,
+                'status' => Status::MENUNGGU,
             ]);
             return response()->json([
                 'message' => 'Berhasil disimpan'

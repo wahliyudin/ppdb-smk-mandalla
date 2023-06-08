@@ -3,9 +3,6 @@
 @section('title', 'Biodata')
 
 @section('content')
-    @php
-        $isCompleted = false;
-    @endphp
     @if (!$isCompleted)
         <div class="card">
             <div class="card-header border-0">

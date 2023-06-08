@@ -46,4 +46,9 @@ class User extends Authenticatable
         'password' => 'hashed',
         'role' => Role::class,
     ];
+
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class, 'user_id', 'id');
+    }
 }

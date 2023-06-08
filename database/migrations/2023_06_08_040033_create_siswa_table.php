@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->date('tgl_lahir');
             $table->string('tempat_lahir');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
 
