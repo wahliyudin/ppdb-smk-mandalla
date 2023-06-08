@@ -40,19 +40,21 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </div>
-                <div class="menu-item">
-                    <a class="menu-link" href="{{ route('biodata.index') }}">
-                        <span class="menu-icon">
-                            <i class="ki-duotone ki-category fs-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                            </i>
-                        </span>
-                        <span class="menu-title">Biodata</span>
-                    </a>
-                </div>
+                @role('siswa')
+                    <div class="menu-item">
+                        <a class="menu-link" href="{{ route('biodata.index') }}">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-category fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Biodata</span>
+                        </a>
+                    </div>
+                @endrole
             </div>
         </div>
     </div>

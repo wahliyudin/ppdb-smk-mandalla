@@ -27,8 +27,10 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');
+    Route::middleware(['role:siswa'])->group(function () {
+        Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');
 
-    Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
-    Route::post('pendaftaran/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+        Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+        Route::post('pendaftaran/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+    });
 });
