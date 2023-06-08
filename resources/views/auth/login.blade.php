@@ -1,5 +1,7 @@
 @extends('auth.layouts.master')
 
+@section('title', 'Sign In')
+
 @section('content')
     <!--begin::Form-->
     <form method="POST" action="{{ route('login') }}">

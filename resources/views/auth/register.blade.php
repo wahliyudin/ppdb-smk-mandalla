@@ -1,5 +1,7 @@
 @extends('auth.layouts.master')
 
+@section('title', 'Sign Up')
+
 @section('content')
     <form method="POST" action="{{ route('register') }}">
         @csrf

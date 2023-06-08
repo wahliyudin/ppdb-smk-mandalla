@@ -147,9 +147,16 @@
                                                                 <div class="layer-1-4">
                                                                     <div class="genius-btn  text-center text-uppercase ul-li-block bold-font"
                                                                         style="border-color:#17d0cf;">
-                                                                        <a style="color:#fff;"
-                                                                            href="{{ route('login') }}">Sign In<i
-                                                                                class="fas fa-caret-right"></i></a>
+                                                                        @auth
+                                                                            <a style="color:#fff;"
+                                                                                href="{{ route('home') }}">Home<i
+                                                                                    class="fas fa-caret-right"></i></a>
+                                                                        @endauth
+                                                                        @guest
+                                                                            <a style="color:#fff;"
+                                                                                href="{{ route('login') }}">Sign In<i
+                                                                                    class="fas fa-caret-right"></i></a>
+                                                                        @endguest
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -179,9 +186,16 @@
                                                                 <div class="layer-1-4">
                                                                     <div class="genius-btn  text-center text-uppercase ul-li-block bold-font"
                                                                         style="border-color:#17d0cf;">
-                                                                        <a style="color:#fff;"
-                                                                            href="{{ route('login') }}">Sign In<i
-                                                                                class="fas fa-caret-right"></i></a>
+                                                                        @auth
+                                                                            <a style="color:#fff;"
+                                                                                href="{{ route('home') }}">Home<i
+                                                                                    class="fas fa-caret-right"></i></a>
+                                                                        @endauth
+                                                                        @guest
+                                                                            <a style="color:#fff;"
+                                                                                href="{{ route('login') }}">Sign In<i
+                                                                                    class="fas fa-caret-right"></i></a>
+                                                                        @endguest
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -211,9 +225,16 @@
                                                                 <div class="layer-1-4">
                                                                     <div class="genius-btn  text-center text-uppercase ul-li-block bold-font"
                                                                         style="border-color:#17d0cf;">
-                                                                        <a style="color:#fff;"
-                                                                            href="{{ route('login') }}">Sign In<i
-                                                                                class="fas fa-caret-right"></i></a>
+                                                                        @auth
+                                                                            <a style="color:#fff;"
+                                                                                href="{{ route('home') }}">Home<i
+                                                                                    class="fas fa-caret-right"></i></a>
+                                                                        @endauth
+                                                                        @guest
+                                                                            <a style="color:#fff;"
+                                                                                href="{{ route('login') }}">Sign In<i
+                                                                                    class="fas fa-caret-right"></i></a>
+                                                                        @endguest
                                                                     </div>
                                                                 </div>
                                                             </div>

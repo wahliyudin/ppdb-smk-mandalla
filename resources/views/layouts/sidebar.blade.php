@@ -27,7 +27,7 @@
             data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px">
             <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold" id="#kt_app_sidebar_menu"
                 data-kt-menu="true" data-kt-menu-expand="false">
-                {{-- <div class="menu-item">
+                <div class="menu-item">
                     <a class="menu-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-category fs-2">
@@ -39,7 +39,20 @@
                         </span>
                         <span class="menu-title">Dashboard</span>
                     </a>
-                </div> --}}
+                </div>
+                <div class="menu-item">
+                    <a class="menu-link" href="{{ route('biodata.index') }}">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-category fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Biodata</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
