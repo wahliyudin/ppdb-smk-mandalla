@@ -1,11 +1,11 @@
 <div class="d-flex align-items-center gap-2">
-    <a href="{{ route('calon-siswa.show', $siswa->getKey()) }}" class="btn btn-sm btn-primary ps-4">
+    <a href="{{ route('pembayaran.show', $siswa->getKey()) }}" class="btn btn-sm btn-primary ps-4">
         <i class="ki-duotone ki-eye fs-3">
             <i class="path1"></i>
             <i class="path2"></i>
             <i class="path3"></i>
         </i>Detail</a>
-    {{-- <button type="button" data-calon-siswa="{{ $siswa->getKey() }}" class="btn btn-sm btn-danger ps-4 btn-delete">
+    {{-- <button type="button" data-pembayaran="{{ $siswa->getKey() }}" class="btn btn-sm btn-danger ps-4 btn-delete">
         <span class="indicator-label">
             <div class="d-flex align-items-center gap-2">
                 <i class="ki-duotone ki-trash fs-3">
@@ -21,7 +21,7 @@
             Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
         </span>
     </button> --}}
-    <button type="button" data-calon-siswa="{{ $siswa->getKey() }}" class="btn btn-sm btn-success ps-4 btn-verifikasi">
+    <button type="button" data-pembayaran="{{ $siswa->getKey() }}" class="btn btn-sm btn-success ps-4 btn-verifikasi">
         <span class="indicator-label">
             <div class="d-flex align-items-center gap-2">
                 <i class="ki-duotone ki-check-square fs-3">
@@ -34,7 +34,7 @@
             Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
         </span>
     </button>
-    <button type="button" data-calon-siswa="{{ $siswa->getKey() }}" class="btn btn-sm btn-danger ps-4 btn-tolak">
+    <button type="button" data-pembayaran="{{ $siswa->getKey() }}" class="btn btn-sm btn-danger ps-4 btn-tolak">
         <span class="indicator-label">
             <div class="d-flex align-items-center gap-2">
                 <i class="ki-duotone ki-trash fs-3">

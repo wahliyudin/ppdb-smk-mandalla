@@ -70,6 +70,7 @@
                             </div>
                         </th>
                         <th class="min-w-125px">Nama</th>
+                        <th class="min-w-125px">Jenis Kelamin</th>
                         <th class="text-end min-w-70px">Actions</th>
                     </tr>
                 </thead>

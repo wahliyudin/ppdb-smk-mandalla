@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\JenisKelamin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,10 @@ class Siswa extends Model
         'jenis_kelamin',
         'tgl_lahir',
         'tempat_lahir',
+    ];
+
+    protected $casts = [
+        'jenis_kelamin' => JenisKelamin::class
     ];
 
     public function orangTua()

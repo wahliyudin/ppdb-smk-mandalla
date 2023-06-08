@@ -36,7 +36,7 @@ var KTCalonSiswasList = function () {
             },
             ajax: {
                 type: "POST",
-                url: "/calon-siswa/datatable"
+                url: "/pembayaran/datatable"
             },
             columns: [
                 {
@@ -240,8 +240,8 @@ var KTCalonSiswasList = function () {
     }
 
     var handleDeleteRow = () => {
-        $('#calon_siswa_table').on('click', '.btn-delete', function () {
-            var calonSiswa = $(this).data('calon-siswa');
+        $('#pembayaran_table').on('click', '.btn-delete', function () {
+            var pembayaran = $(this).data('pembayaran');
             var target = this;
             $(target).attr("data-kt-indicator", "on");
             Swal.fire({
@@ -259,7 +259,7 @@ var KTCalonSiswasList = function () {
                 if (result.value) {
                     $.ajax({
                         type: "DELETE",
-                        url: `/calon-siswa/${calonSiswa}/destroy`,
+                        url: `/pembayaran/${pembayaran}/destroy`,
                         dataType: "JSON",
                         success: function (response) {
                             $(target).removeAttr("data-kt-indicator");
@@ -313,8 +313,8 @@ var KTCalonSiswasList = function () {
         });
     }
     var handleVerifikasiRow = () => {
-        $('#calon_siswa_table').on('click', '.btn-verifikasi', function () {
-            var calonSiswa = $(this).data('calon-siswa');
+        $('#pembayaran_table').on('click', '.btn-verifikasi', function () {
+            var pembayaran = $(this).data('pembayaran');
             var target = this;
             $(target).attr("data-kt-indicator", "on");
             Swal.fire({
@@ -332,7 +332,7 @@ var KTCalonSiswasList = function () {
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: `/calon-siswa/${calonSiswa}/verifikasi`,
+                        url: `/pembayaran/${pembayaran}/verifikasi`,
                         dataType: "JSON",
                         success: function (response) {
                             $(target).removeAttr("data-kt-indicator");
@@ -386,8 +386,8 @@ var KTCalonSiswasList = function () {
         });
     }
     var handleTolakRow = () => {
-        $('#calon_siswa_table').on('click', '.btn-tolak', function () {
-            var calonSiswa = $(this).data('calon-siswa');
+        $('#pembayaran_table').on('click', '.btn-tolak', function () {
+            var pembayaran = $(this).data('pembayaran');
             var target = this;
             $(target).attr("data-kt-indicator", "on");
             Swal.fire({
@@ -405,7 +405,7 @@ var KTCalonSiswasList = function () {
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: `/calon-siswa/${calonSiswa}/tolak`,
+                        url: `/pembayaran/${pembayaran}/tolak`,
                         dataType: "JSON",
                         success: function (response) {
                             $(target).removeAttr("data-kt-indicator");
@@ -462,7 +462,7 @@ var KTCalonSiswasList = function () {
     // Public methods
     return {
         init: function () {
-            table = document.querySelector('#calon_siswa_table');
+            table = document.querySelector('#pembayaran_table');
 
             if (!table) {
                 return;
