@@ -91,7 +91,7 @@
         </div>
         <!--end::Input group--->
 
-        <!--begin::Accept-->
+        {{-- <!--begin::Accept-->
         <div class="fv-row mb-8">
             <label class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" name="toc" value="1" />
@@ -100,7 +100,7 @@
                 </span>
             </label>
         </div>
-        <!--end::Accept-->
+        <!--end::Accept--> --}}
 
         <!--begin::Submit button-->
         <div class="d-grid mb-10">

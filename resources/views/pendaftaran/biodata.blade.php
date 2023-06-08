@@ -185,30 +185,30 @@
                             <!--begin::Step 1-->
                             <div class="flex-column current" data-kt-stepper-element="content">
                                 <div class="row">
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Nama</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                            name="nama_ayah" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid" value="{{ now()->format('Y-m-d') }}"
-                                            placeholder="Tanggal" name="tanggal" id="tanggal" />
+                                            placeholder="Tanggal Lahir" name="tanggal_lahir_ayah" id="tanggal_lahir_ayah" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tempat Lahir</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Tempat Lahir" name="tempat_lahir_ayah" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Pekerjaan</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Pekerjaan" name="pekerjaan_ayah" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">No. Telp</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="number" class="form-control form-control-solid"
+                                            placeholder="No. Telp" name="no_telp_ayah" />
                                     </div>
                                 </div>
                             </div>
@@ -217,31 +217,31 @@
                             <!--begin::Step 1-->
                             <div class="flex-column" data-kt-stepper-element="content">
                                 <div class="row">
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Nama</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                            name="nama_ibu" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid"
-                                            value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal" name="tanggal"
-                                            id="tanggal" />
+                                            value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal Lahir"
+                                            name="tanggal_lahir_ibu" id="tanggal_lahir_ibu" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tempat Lahir</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Tempat Lahir" name="tempat_lahir_ibu" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Pekerjaan</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Pekerjaan" name="pekerjaan_ibu" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">No. Telp</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="number" class="form-control form-control-solid"
+                                            placeholder="No. Telp" name="no_telp_ibu" />
                                     </div>
                                 </div>
                             </div>
@@ -250,35 +250,35 @@
                             <!--begin::Step 1-->
                             <div class="flex-column" data-kt-stepper-element="content">
                                 <div class="row">
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">NIK</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid" placeholder="NIK"
+                                            name="nik_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">NISN</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid" placeholder="NISN"
+                                            name="nisn_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Nama</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                            name="nama_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tempat Lahir</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Tempat Lahir" name="tempat_lahir_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid"
-                                            value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal" name="tanggal"
-                                            id="tanggal" />
+                                            value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal Lahir"
+                                            name="tanggal_lahir_biodata" id="tanggal_lahir" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Jenis Kelamin</label>
-                                        <select class="form-select form-select-solid" name="jenis_kelamin"
+                                        <select class="form-select form-select-solid" name="jenis_kelamin_biodata"
                                             data-control="select2" data-placeholder="Jenis Kelamin">
                                             <option></option>
                                             @foreach (\App\Enums\JenisKelamin::cases() as $jenisKelamin)
@@ -287,24 +287,24 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Jumlah Saudara</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Jumlah Saudara" name="jumlah_saudara_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Anak Ke</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Anak Ke" name="anak_ke_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Dari</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid" placeholder="Dari"
+                                            name="dari_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Agama</label>
-                                        <select class="form-select form-select-solid" name="agama"
+                                        <select class="form-select form-select-solid" name="agama_biodata"
                                             data-control="select2" data-placeholder="Agama">
                                             <option></option>
                                             @foreach (\App\Enums\Agama::cases() as $agama)
@@ -313,35 +313,35 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Suku</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid" placeholder="Suku"
+                                            name="suku_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Asal Sekolah</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Asal Sekolah" name="asal_sekolah_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">No Ijazah</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="No Ijazah" name="no_ijazah_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Berat Badan</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Berat Badan" name="berat_badan_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tinggi Badan</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Tinggi Badan" name="tinggi_badan_biodata" />
                                     </div>
-                                    <div class="col-md-6 mb-7">
+                                    <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Riwayat Penyakit</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama" />
+                                        <input type="text" class="form-control form-control-solid"
+                                            placeholder="Riwayat Penyakit" name="riwayat_penyakit_biodata" />
                                     </div>
                                 </div>
                             </div>
@@ -350,28 +350,53 @@
                             <!--begin::Step 1-->
                             <div class="flex-column" data-kt-stepper-element="content">
                                 <div class="row">
-
+                                    <div class="fv-row col-md-6 mb-7">
+                                        <label class="required fs-6 fw-semibold mb-2">KTP Orang Tua</label>
+                                        <input type="file" class="form-control form-control-solid"
+                                            placeholder="KTP Orang Tua" name="ktp_orang_tua_file"
+                                            accept=".png, .jpg, .jpeg" />
+                                    </div>
+                                    <div class="fv-row col-md-6 mb-7">
+                                        <label class="required fs-6 fw-semibold mb-2">Ijazah</label>
+                                        <input type="file" class="form-control form-control-solid"
+                                            placeholder="Ijazah" name="ijazah_file" accept=".png, .jpg, .jpeg" />
+                                    </div>
+                                    <div class="fv-row col-md-6 mb-7">
+                                        <label class="fs-6 fw-semibold mb-2">KIP</label>
+                                        <input type="file" class="form-control form-control-solid" placeholder="KIP"
+                                            name="kip_file" accept=".png, .jpg, .jpeg" />
+                                    </div>
+                                    <div class="fv-row col-md-6 mb-7">
+                                        <label class="fs-6 fw-semibold mb-2">PKH</label>
+                                        <input type="file" class="form-control form-control-solid" placeholder="PKH"
+                                            name="pkh_file" accept=".png, .jpg, .jpeg" />
+                                    </div>
+                                    <div class="fv-row col-md-6 mb-7">
+                                        <label class="fs-6 fw-semibold mb-2">KKS</label>
+                                        <input type="file" class="form-control form-control-solid" placeholder="KKS"
+                                            name="kks_file" accept=".png, .jpg, .jpeg" />
+                                    </div>
                                 </div>
                             </div>
                             <!--begin::Step 1-->
 
                             <!--begin::Step 1-->
                             <div class="flex-column" data-kt-stepper-element="content">
-                                <div class="alert alert-primary d-flex align-items-center p-5">
+                                <div class="alert alert-warning d-flex align-items-center p-5">
                                     <!--begin::Icon-->
-                                    <i class="ki-duotone ki-shield-tick fs-2hx text-success me-4"><span
+                                    <i class="ki-duotone ki-shield-tick fs-2hx text-warning me-4"><span
                                             class="path1"></span><span class="path2"></span></i>
                                     <!--end::Icon-->
 
                                     <!--begin::Wrapper-->
                                     <div class="d-flex flex-column">
                                         <!--begin::Title-->
-                                        <h4 class="mb-1 text-dark">This is an alert</h4>
+                                        <h4 class="mb-1 text-warning">Peringatan!</h4>
                                         <!--end::Title-->
 
                                         <!--begin::Content-->
-                                        <span>The alert component can be used to highlight certain parts of your page for
-                                            higher content visibility.</span>
+                                        <span>Dengan mengirim data diri dan orang tua maka kamu sudah mematuhi segala
+                                            peraturan pada PPDB ini</span>
                                         <!--end::Content-->
                                     </div>
                                     <!--end::Wrapper-->
@@ -394,7 +419,8 @@
 
                             <!--begin::Wrapper-->
                             <div>
-                                <button type="button" class="btn btn-primary" data-kt-stepper-action="submit">
+                                <button type="button" class="btn btn-primary" id="kt_docs_formvalidation_text_submit"
+                                    data-kt-stepper-action="submit">
                                     <span class="indicator-label">
                                         Submit
                                     </span>
@@ -425,20 +451,311 @@
 @push('js')
     <script src="assets/js/scripts.bundle.js"></script>
     <script>
-        $("#tanggal").flatpickr();
-        var element = document.querySelector("#kt_stepper_example_basic");
+        $(document).ready(function() {
 
-        // Initialize Stepper
-        var stepper = new KTStepper(element);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#tanggal_lahir_ayah").flatpickr();
+            $("#tanggal_lahir_ibu").flatpickr();
+            var element = document.querySelector("#kt_stepper_example_basic");
 
-        // Handle next step
-        stepper.on("kt.stepper.next", function(stepper) {
-            stepper.goNext(); // go next step
-        });
+            // Initialize Stepper
+            var stepper = new KTStepper(element);
 
-        // Handle previous step
-        stepper.on("kt.stepper.previous", function(stepper) {
-            stepper.goPrevious(); // go previous step
+            // Handle next step
+            stepper.on("kt.stepper.next", function(stepper) {
+                switch (stepper.getCurrentStepIndex()) {
+                    case 1:
+                        fields = {
+                            'nama_ayah': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Nama ayah wajib diisi'
+                                    }
+                                }
+                            },
+                            'tanggal_lahir_ayah': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tanggal lahir ayah wajib diisi'
+                                    }
+                                }
+                            },
+                            'tempat_lahir_ayah': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tempat lahir ayah wajib diisi'
+                                    }
+                                }
+                            },
+                            'pekerjaan_ayah': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Pekerjaan ayah wajib diisi'
+                                    }
+                                }
+                            },
+                            'no_telp_ayah': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'No telpon ayah wajib diisi'
+                                    }
+                                }
+                            },
+                        };
+                        break;
+                    case 2:
+                        fields = {
+                            'nama_ibu': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Nama ibu wajib diisi'
+                                    }
+                                }
+                            },
+                            'tanggal_lahir_ibu': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tanggal lahir ibu wajib diisi'
+                                    }
+                                }
+                            },
+                            'tempat_lahir_ibu': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tempat lahir ibu wajib diisi'
+                                    }
+                                }
+                            },
+                            'pekerjaan_ibu': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Pekerjaan ibu wajib diisi'
+                                    }
+                                }
+                            },
+                            'no_telp_ibu': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'No telpon ibu wajib diisi'
+                                    }
+                                }
+                            },
+                        };
+                        break;
+                    case 3:
+                        fields = {
+                            'nik_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'NIK wajib diisi'
+                                    }
+                                }
+                            },
+                            'nisn_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'NISN wajib diisi'
+                                    }
+                                }
+                            },
+                            'nama_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Nama wajib diisi'
+                                    }
+                                }
+                            },
+                            'tempat_lahir_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tempat Lahir wajib diisi'
+                                    }
+                                }
+                            },
+                            'tanggal_lahir_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tanggal Lahir wajib diisi'
+                                    }
+                                }
+                            },
+                            'jenis_kelamin_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Jenis Kelamin wajib diisi'
+                                    }
+                                }
+                            },
+                            'jumlah_saudara_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Jumlah saudara wajib diisi'
+                                    }
+                                }
+                            },
+                            'anak_ke_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Anak ke wajib diisi'
+                                    }
+                                }
+                            },
+                            'dari_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Dari wajib diisi'
+                                    }
+                                }
+                            },
+                            'agama_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Agama wajib diisi'
+                                    }
+                                }
+                            },
+                            'suku_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Suku wajib diisi'
+                                    }
+                                }
+                            },
+                            'asal_sekolah_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Asal sekolah wajib diisi'
+                                    }
+                                }
+                            },
+                            'no_ijazah_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'No ijazah wajib diisi'
+                                    }
+                                }
+                            },
+                            'berat_badan_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Berat badan wajib diisi'
+                                    }
+                                }
+                            },
+                            'tinggi_badan_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Tinggi badan wajib diisi'
+                                    }
+                                }
+                            },
+                            'riwayat_penyakit_biodata': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Riwayat penyakit wajib diisi'
+                                    }
+                                }
+                            },
+                        };
+                        break;
+                    case 4:
+                        fields = {
+                            'ktp_orang_tua_file': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'KTP Orang Tua wajib diisi'
+                                    }
+                                }
+                            },
+                            'ijazah_file': {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Ijazah wajib diisi'
+                                    }
+                                }
+                            },
+                        };
+                        break;
+                }
+                initVaildate(fields).validate().then(function(status) {
+                    if (status == 'Valid') {
+                        stepper.goNext(); // go next step
+                    }
+                });
+            });
+
+            // Handle previous step
+            stepper.on("kt.stepper.previous", function(stepper) {
+                stepper.goPrevious(); // go previous step
+            });
+
+            function initVaildate(fields) {
+                const form = document.getElementById('kt_stepper_example_basic_form');
+                return FormValidation.formValidation(
+                    form, {
+                        fields: fields,
+
+                        plugins: {
+                            trigger: new FormValidation.plugins.Trigger(),
+                            bootstrap: new FormValidation.plugins.Bootstrap5({
+                                rowSelector: '.fv-row',
+                                eleInvalidClass: '',
+                                eleValidClass: ''
+                            })
+                        }
+                    }
+                );
+            }
+
+            $('#kt_docs_formvalidation_text_submit').click(function(e) {
+                e.preventDefault();
+                var target = this;
+                $(this).attr('data-kt-indicator', 'on');
+                var postData = new FormData($("#kt_stepper_example_basic_form")[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: `/pendaftaran/store`,
+                    processData: false,
+                    contentType: false,
+                    data: postData,
+                    success: function(response) {
+                        $(target).removeAttr('data-kt-indicator');
+                        Swal.fire({
+                            text: response.message,
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        }).then(function(result) {
+                            if (result.isConfirmed) {
+                                // location.reload();
+                            }
+                        });
+                    },
+                    error: function(jqXHR, xhr, textStatus, errorThrow, exception) {
+                        $(target).removeAttr('data-kt-indicator');
+                        if (jqXHR.status == 422) {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Peringatan!',
+                                text: JSON.parse(jqXHR.responseText).message,
+                            })
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                'Something went wrong',
+                                'error'
+                            );
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endpush

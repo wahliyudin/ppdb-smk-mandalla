@@ -148,7 +148,7 @@
                                                                     <div class="genius-btn  text-center text-uppercase ul-li-block bold-font"
                                                                         style="border-color:#17d0cf;">
                                                                         <a style="color:#fff;"
-                                                                            href="{{ route('register') }}">Sign In<i
+                                                                            href="{{ route('login') }}">Sign In<i
                                                                                 class="fas fa-caret-right"></i></a>
                                                                     </div>
                                                                 </div>
@@ -180,7 +180,7 @@
                                                                     <div class="genius-btn  text-center text-uppercase ul-li-block bold-font"
                                                                         style="border-color:#17d0cf;">
                                                                         <a style="color:#fff;"
-                                                                            href="{{ route('register') }}">Sign In<i
+                                                                            href="{{ route('login') }}">Sign In<i
                                                                                 class="fas fa-caret-right"></i></a>
                                                                     </div>
                                                                 </div>
@@ -212,7 +212,7 @@
                                                                     <div class="genius-btn  text-center text-uppercase ul-li-block bold-font"
                                                                         style="border-color:#17d0cf;">
                                                                         <a style="color:#fff;"
-                                                                            href="{{ route('register') }}">Sign In<i
+                                                                            href="{{ route('login') }}">Sign In<i
                                                                                 class="fas fa-caret-right"></i></a>
                                                                     </div>
                                                                 </div>

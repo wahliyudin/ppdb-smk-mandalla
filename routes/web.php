@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PendaftaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pendaftaran.biodata');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
+    Route::post('pendaftaran/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+});
