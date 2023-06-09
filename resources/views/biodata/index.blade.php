@@ -4,7 +4,7 @@
 
 @section('content')
     @if (!$isCompleted)
-        <div class="card">
+        <div class="card mt-7">
             <div class="card-header border-0">
                 <div class="card-body">
                     <div class="row justify-content-between align-items-center">
@@ -36,7 +36,7 @@
         </div>
     @else
         <!--begin::Navbar-->
-        <div class="card card-flush mb-9" id="kt_user_profile_panel">
+        <div class="card card-flush mb-9 mt-7" id="kt_user_profile_panel">
             <!--begin::Hero nav-->
             <div class="card-header rounded-top bgi-size-cover h-200px"
                 style="background-position: 100% 50%; background-image:url('../assets/media/misc/profile-head-bg.jpg')">
@@ -83,7 +83,6 @@
             </div>
         </div>
         <!--end::Navbar-->
-
         <!--begin::Nav items-->
         <div id="kt_user_profile_nav" class="rounded bg-gray-200 d-flex flex-stack flex-wrap mb-9 p-2" data-kt-sticky="true"
             data-kt-sticky-name="sticky-profile-navs" data-kt-sticky-offset="{default: false, lg: '200px'}"

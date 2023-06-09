@@ -7,6 +7,7 @@ use App\Http\Controllers\Proses\CalonSiswaController;
 use App\Http\Controllers\Proses\PembayaranController;
 use App\Http\Controllers\Proses\TesOnlineController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\SoalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,5 +62,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('siswa/datatable', [SiswaController::class, 'datatable'])->name('siswa.datatable');
         Route::get('siswa/{siswa}/show', [SiswaController::class, 'show'])->name('siswa.show');
         Route::delete('siswa/{siswa}/destroy', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+
+        Route::get('soal', [SoalController::class, 'index'])->name('soal.index');
+        Route::post('soal/datatable', [SoalController::class, 'datatable'])->name('soal.datatable');
+        Route::get('soal/{soal}/show', [SoalController::class, 'show'])->name('soal.show');
+        Route::post('soal/store', [SoalController::class, 'store'])->name('soal.store');
+        Route::post('soal/{soal}/edit', [SoalController::class, 'edit'])->name('soal.edit');
+        Route::put('soal/{soal}/update', [SoalController::class, 'update'])->name('soal.update');
+        Route::put('soal/{soal}/status', [SoalController::class, 'status'])->name('soal.status');
+        Route::delete('soal/{soal}/destroy', [SoalController::class, 'destroy'])->name('soal.destroy');
     });
 });

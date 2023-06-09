@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Jawaban;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,5 +20,9 @@ class Soal extends Model
         'pilihan_d',
         'jawaban',
         'status',
+    ];
+
+    protected $casts = [
+        'jawaban' => Jawaban::class
     ];
 }
