@@ -22,17 +22,20 @@ class TesOnlineController extends Controller
     public function datatable()
     {
         $data = Siswa::query()
-            ->whereHas('proses', function ($query) {
-                $query->where('proses', Proses::TES_ONLINE)->where('status', Status::MENUNGGU);
-            });
+            ->withWhereHas('proses', function ($query) {
+                $query->where('proses', Proses::TES_ONLINE)->whereIn('status', [Status::MENUNGGU, Status::TOLAK]);
+            })->get();
         return DataTables::of($data)
+            ->editColumn('status', function (Siswa $siswa) {
+                return $siswa->proses?->first()?->status == Status::TOLAK ? '<span class="badge badge-exclusive badge-light-danger fw-semibold fs-8 px-2 py-1 ms-1">Tidak Lulus</span>' : '<span class="badge badge-exclusive badge-light-warning fw-semibold fs-8 px-2 py-1 ms-1">Menunggu</span>';
+            })
             ->editColumn('jenis_kelamin', function (Siswa $siswa) {
                 return $siswa->jenis_kelamin->label();
             })
             ->editColumn('action', function (Siswa $siswa) {
                 return view('proses.tes-online.action', compact('siswa'))->render();
             })
-            ->rawColumns(['action', 'check'])
+            ->rawColumns(['action', 'check', 'status'])
             ->make();
     }
 

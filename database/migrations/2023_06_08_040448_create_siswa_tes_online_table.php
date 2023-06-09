@@ -18,6 +18,8 @@ return new class extends Migration
             $table->time('jam_mulai')->nullable();
             $table->date('tgl_selesai')->nullable();
             $table->time('jam_selesai')->nullable();
+            $table->integer('total_benar')->nullable();
+            $table->integer('total_salah')->nullable();
             $table->timestamps();
         });
     }

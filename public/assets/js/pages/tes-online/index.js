@@ -48,6 +48,10 @@ var KTCalonSiswasList = function () {
                     data: 'jenis_kelamin',
                 },
                 {
+                    name: 'status',
+                    data: 'status',
+                },
+                {
                     name: 'action',
                     data: 'action',
                     orderable: false,

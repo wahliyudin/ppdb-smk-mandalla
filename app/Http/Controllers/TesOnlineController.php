@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Proses\Proses;
+use App\Enums\Proses\Status;
 use App\Models\Siswa;
 use App\Models\SiswaTesOnline;
 use Carbon\Carbon;
@@ -48,9 +50,39 @@ class TesOnlineController extends Controller
                     'jawaban' => $value
                 ]);
             }
+
+            $siswa = Siswa::query()->with('tesOnline.tesOnlines')->find($siswaId);
+            $total = 0;
+            foreach ($siswa->tesOnline->tesOnlines as $tes) {
+                if ($tes->jawaban->value == $tes->pivot->jawaban) {
+                    $total++;
+                }
+            }
+            $persen = ($total / count($siswa->tesOnline->tesOnlines)) * 100;
+            if ($persen >= 80) {
+                $siswa->proses()->updateOrCreate([
+                    'proses' => Proses::TES_ONLINE,
+                ], [
+                    'proses' => Proses::TES_ONLINE,
+                    'status' => Status::VERIFIKASI,
+                ]);
+                $siswa->proses()->create([
+                    'proses' => Proses::PEMBAYARAN,
+                    'status' => Status::MENUNGGU,
+                ]);
+            } else {
+                $siswa->proses()->updateOrCreate([
+                    'proses' => Proses::TES_ONLINE,
+                ], [
+                    'proses' => Proses::TES_ONLINE,
+                    'status' => Status::TOLAK,
+                ]);
+            }
             $tesOnline->update([
                 'tgl_selesai' => now()->format('Y-m-d'),
                 'jam_selesai' => now()->format('H:i:s'),
+                'total_benar' => $total,
+                'total_salah' => count($siswa->tesOnline->tesOnlines) - $total,
             ]);
             return response()->json([
                 'message' => 'Berhasil disimpan'

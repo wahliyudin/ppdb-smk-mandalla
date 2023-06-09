@@ -18,6 +18,9 @@ $(function () {
                 finalDate = $(this).data('countdown');
             $this.countdown(finalDate, function (event) {
                 console.log(event.type);
+                if (event.type == 'finish') {
+                    simpan();
+                }
                 var $this = $(this).html(event.strftime('' +
                     '<div class="count_hours"><h3>%H</h3><span class="text-uppercase">hrs</span></div>' +
                     '<div class="count_min"><h3>%M</h3><span class="text-uppercase">min</span></div>' +

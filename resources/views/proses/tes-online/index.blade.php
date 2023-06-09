@@ -46,6 +46,7 @@
                     <tr class="text-start text-gray-400 fw-bold fs-7 text-uppercase gs-0">
                         <th class="min-w-125px">Nama</th>
                         <th class="min-w-125px">Jenis Kelamin</th>
+                        <th class="min-w-125px">Status</th>
                         <th class="text-end min-w-70px">Actions</th>
                     </tr>
                 </thead>

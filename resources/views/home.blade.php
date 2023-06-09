@@ -14,66 +14,65 @@
                                 <h2 class="fs-2x fw-bold mb-10">Welcome to {{ env('APP_NAME') }}</h2>
                                 <!--end::Title-->
 
-                                <!--begin::Description-->
-                                <div
-                                    class="notice text-start d-flex bg-light-warning rounded border-warning border border-dashed  p-6 mb-7">
-                                    <!--begin::Icon-->
-                                    <i class="ki-duotone ki-information fs-2tx text-warning me-4"><span
-                                            class="path1"></span><span class="path2"></span><span class="path3"></span></i>
-                                    <!--end::Icon-->
-
-                                    <!--begin::Wrapper-->
-                                    <div class="d-flex flex-stack flex-grow-1 ">
-                                        <!--begin::Content-->
-                                        <div class=" fw-semibold">
-                                            <h4 class="text-gray-900 fw-bold">Peringatan!</h4>
-
-                                            @switch($proses?->proses)
-                                                @case(\App\Enums\Proses\Proses::TES_ONLINE)
-                                                    <div class="fs-6 text-gray-700">Anda belum mengerjakan soal tes online!</div>
-                                                @break
-
-                                                @case(\App\Enums\Proses\Proses::PEMBAYARAN)
-                                                    <div class="fs-6 text-gray-700">Anda belum melakukan pembayaran biaya pendaftaran!
-                                                    </div>
-                                                @break
-
-                                                @case(\App\Enums\Proses\Proses::DOKUMEN)
-                                                    <div class="fs-6 text-gray-700">Biodata Anda sedang di verifikasi!</div>
-                                                @break
-
-                                                @default
-                                                    <div class="fs-6 text-gray-700">Anda belum melengkapi biodata!</div>
-                                            @endswitch
-                                        </div>
-                                        <!--end::Content-->
-
-                                    </div>
-                                    <!--end::Wrapper-->
-                                </div>
-                                <!--end::Description-->
-
                                 @switch($proses?->proses)
                                     @case(\App\Enums\Proses\Proses::TES_ONLINE)
-                                        <a href="{{ route('biodata.index') }}" class="btn btn-primary">Kerjakan Soal Sekarang</a>
+                                        @if (\App\Enums\Proses\Status::TOLAK == $proses?->status)
+                                            @include('alerts.danger', [
+                                                'message' => 'Maaf, Anda tidak lulus ujian online!',
+                                            ])
+                                        @else
+                                            @include('alerts.warning', [
+                                                'message' =>
+                                                    'Anda belum mengerjakan soal tes online! <br> Silahkan cek email kmu!',
+                                            ])
+                                        @endif
                                     @break
 
                                     @case(\App\Enums\Proses\Proses::PEMBAYARAN)
-                                        <a href="{{ route('biodata.index') }}" class="btn btn-primary">Bayar Sekarang</a>
+                                        @switch($proses?->status)
+                                            @case(\App\Enums\Proses\Status::MENUNGGU)
+                                                @include('alerts.warning', [
+                                                    'message' =>
+                                                        'Anda belum melakukan pembayaran biaya pendaftaran! <br> Silahkan bayar <a href="" class="underline">disini</a>',
+                                                ])
+                                            @break
+
+                                            @case(\App\Enums\Proses\Status::VERIFIKASI)
+                                            @break
+
+                                            @default
+                                                @include('alerts.danger', [
+                                                    'message' =>
+                                                        'Maaf, Bukti bayar yang anda kirim tidak valid! <br> Silahkan kirim kembali bukti pembayaran yang <strong>valid</strong>!',
+                                                ])
+                                        @endswitch
                                     @break
 
                                     @case(\App\Enums\Proses\Proses::DOKUMEN)
-                                        <a href="{{ route('biodata.index') }}" class="btn btn-primary">Lihat Biodata</a>
-                                    @break
+                                        @switch($proses?->status)
+                                            @case(\App\Enums\Proses\Status::MENUNGGU)
+                                                @include('alerts.warning', [
+                                                    'message' =>
+                                                        'Biodata Anda sedang di verifikasi!! <br> Silahkan bayar <a href="" class="underline">disini</a>',
+                                                ])
+                                            @break
 
-                                    @default
-                                        <a href="{{ route('pendaftaran.index') }}" class="btn btn-primary">Lengkapi Biodata Sekarang</a>
+                                            @case(\App\Enums\Proses\Status::VERIFIKASI)
+                                            @break
+
+                                            @default
+                                                @include('alerts.danger', [
+                                                    'message' =>
+                                                        'Maaf, Biodata yang anda masukkan tidak valid! <br> Silahkan input kembali disini!',
+                                                ])
+                                        @endswitch
+                                    @break
                                 @endswitch
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img style="width: 100%; height: auto;" src="assets/media/illustrations/dozzy-1/7.png"
-                                alt="" srcset="">
+                            <img style="width: 100%; height: auto;" src="assets/media/illustrations/dozzy-1/7.png" alt=""
+                                srcset="">
                         </div>
                     </div>
                 </div>

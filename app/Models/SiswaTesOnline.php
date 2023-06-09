@@ -17,6 +17,8 @@ class SiswaTesOnline extends Model
         'jam_mulai',
         'tgl_selesai',
         'jam_selesai',
+        'total_benar',
+        'total_salah',
     ];
 
     public function siswa()
