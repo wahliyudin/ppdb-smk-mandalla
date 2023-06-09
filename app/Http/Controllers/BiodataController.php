@@ -8,7 +8,8 @@ class BiodataController extends Controller
 {
     public function index()
     {
-        $isCompleted = isset(auth()->user()?->siswa);
-        return view('biodata.index', compact('isCompleted'));
+        $siswa = auth()->user()?->siswa;
+        $isCompleted = isset($siswa);
+        return view('biodata.index', compact('isCompleted', 'siswa'));
     }
 }

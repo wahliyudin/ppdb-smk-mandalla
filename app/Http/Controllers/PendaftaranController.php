@@ -32,13 +32,11 @@ class PendaftaranController extends Controller
             $siswa->orangTua()->updateOrCreate([
                 'nama_ayah' => $request->nama_ayah,
                 'tempat_lahir_ayah' => $request->tempat_lahir_ayah,
-                'email_ayah' => $request->email_ayah,
                 'pekerjaan_ayah' => $request->pekerjaan_ayah,
                 'tgl_lahir_ayah' => $request->tanggal_lahir_ayah,
                 'no_telp_ayah' => $request->no_telp_ayah,
                 'nama_ibu' => $request->nama_ibu,
                 'tempat_lahir_ibu' => $request->tempat_lahir_ibu,
-                'email_ibu' => $request->email_ibu,
                 'pekerjaan_ibu' => $request->pekerjaan_ibu,
                 'tgl_lahir_ibu' => $request->tanggal_lahir_ibu,
                 'no_telp_ibu' => $request->no_telp_ibu,

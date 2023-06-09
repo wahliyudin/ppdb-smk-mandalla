@@ -16,13 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('siswa_id');
             $table->string('nama_ayah');
             $table->string('tempat_lahir_ayah');
-            $table->string('email_ayah')->nullable();
             $table->string('pekerjaan_ayah');
             $table->date('tgl_lahir_ayah');
             $table->string('no_telp_ayah')->nullable();
             $table->string('nama_ibu');
             $table->string('tempat_lahir_ibu');
-            $table->string('email_ibu')->nullable();
             $table->string('pekerjaan_ibu');
             $table->date('tgl_lahir_ibu');
             $table->string('no_telp_ibu')->nullable();

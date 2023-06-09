@@ -6,6 +6,7 @@ use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\Proses\CalonSiswaController;
 use App\Http\Controllers\Proses\PembayaranController;
 use App\Http\Controllers\Proses\TesOnlineController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -55,5 +56,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pembayaran/{siswa}/show', [PembayaranController::class, 'show'])->name('pembayaran.show');
         Route::post('pembayaran/{siswa}/verifikasi', [PembayaranController::class, 'verifikasi'])->name('pembayaran.verifikasi');
         Route::post('pembayaran/{siswa}/tolak', [PembayaranController::class, 'tolak'])->name('pembayaran.verifikasi');
+
+        Route::get('siswa', [SiswaController::class, 'index'])->name('siswa.index');
+        Route::post('siswa/datatable', [SiswaController::class, 'datatable'])->name('siswa.datatable');
+        Route::get('siswa/{siswa}/show', [SiswaController::class, 'show'])->name('siswa.show');
+        Route::delete('siswa/{siswa}/destroy', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     });
 });
