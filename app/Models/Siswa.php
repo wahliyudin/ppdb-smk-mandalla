@@ -53,4 +53,9 @@ class Siswa extends Model
     {
         return $this->hasMany(Proses::class, 'siswa_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Proses;
 use App\Enums\Proses\Proses;
 use App\Enums\Proses\Status;
 use App\Http\Controllers\Controller;
+use App\Jobs\TesOnline;
 use App\Models\Siswa;
+use App\Models\Soal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\URL;
 use Yajra\DataTables\Facades\DataTables;
 
 class CalonSiswaController extends Controller
@@ -41,6 +45,7 @@ class CalonSiswaController extends Controller
         return view('proses.calon-siswa.show', compact('siswa'));
     }
 
+
     public function verifikasi(Siswa $siswa)
     {
         try {
@@ -51,6 +56,15 @@ class CalonSiswaController extends Controller
                 'proses' => Proses::TES_ONLINE,
                 'status' => Status::MENUNGGU,
             ]);
+            $tesOnline = $siswa->tesOnline()->create([]);
+            $soals = Soal::query()->where('status', true)->pluck('id')->toArray();
+            $tesOnline->tesOnlines()->sync($soals);
+            $tesOnline = URL::temporarySignedRoute(
+                'tes-online.mulai',
+                now()->addDays(3),
+                ['siswa' => Crypt::encrypt($siswa->getKey())]
+            );
+            dispatch(new TesOnline($siswa->user?->email, $tesOnline));
             return response()->json([
                 'message' => 'Berhasil di verifikasi'
             ]);

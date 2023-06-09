@@ -75,10 +75,13 @@ class PendaftaranController extends Controller
                 'riwayat_penyakit' => $request->riwayat_penyakit_biodata,
             ]);
 
-            $siswa->proses()->create([
+            $siswa->proses()->updateOrCreate([
+                'proses' => ProsesProses::DOKUMEN,
+            ], [
                 'proses' => ProsesProses::DOKUMEN,
                 'status' => Status::MENUNGGU,
             ]);
+
             return response()->json([
                 'message' => 'Berhasil disimpan'
             ]);

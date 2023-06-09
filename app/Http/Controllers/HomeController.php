@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Proses\Status;
+use App\Models\Proses;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $siswa = Siswa::query()->with('proses')->where('user_id', auth()->user()?->id)->first();
+        $proses = Proses::query()->where('siswa_id', $siswa?->getKey())->where('status', Status::MENUNGGU)?->latest()?->first();
+        return view('home', compact('proses'));
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Proses\PembayaranController;
 use App\Http\Controllers\Proses\TesOnlineController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SoalController;
+use App\Http\Controllers\TesOnlineController as ControllersTesOnlineController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
         Route::post('pendaftaran/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+
+        Route::get('tes-online/mulai', [ControllersTesOnlineController::class, 'index'])->name('tes-online.mulai')->middleware('signed');
+        Route::post('tes-online/store', [ControllersTesOnlineController::class, 'store'])->name('tes-online.store');
+        Route::get('tes-online/thank', [ControllersTesOnlineController::class, 'thank'])->name('tes-online.thank');
     });
 
     Route::middleware(['role:admin'])->group(function () {
@@ -51,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('tes-online/{siswa}/show', [TesOnlineController::class, 'show'])->name('tes-online.show');
         Route::post('tes-online/{siswa}/verifikasi', [TesOnlineController::class, 'verifikasi'])->name('tes-online.verifikasi');
         Route::post('tes-online/{siswa}/tolak', [TesOnlineController::class, 'tolak'])->name('tes-online.verifikasi');
+        Route::post('tes-online/{siswa}/resend', [TesOnlineController::class, 'resend'])->name('tes-online.resend');
 
         Route::get('pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
         Route::post('pembayaran/datatable', [PembayaranController::class, 'datatable'])->name('pembayaran.datatable');

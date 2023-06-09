@@ -6,24 +6,11 @@
 // ==================================================
 $(function () {
     "use strict";
-    // ========== Form-select-option ========== //
-    $(".step_1").on('click', function () {
-        $(".step_1").removeClass("active");
-        $(this).addClass("active");
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
-    $(".step_2").on('click', function () {
-        $(".step_2").removeClass("active");
-        $(this).addClass("active");
-    });
-    $(".step_3").on('click', function () {
-        $(".step_3").removeClass("active");
-        $(this).addClass("active");
-    });
-    $(".step_4").on('click', function () {
-        $(".step_4").removeClass("active");
-        $(this).addClass("active");
-    });
-
     // ================== CountDown function ================
     $('.countdown_timer').each(function () {
         $('[data-countdown]').each(function () {
@@ -40,6 +27,26 @@ $(function () {
     });
 
 });
+
+function simpan() {
+    var postData = new FormData($(".multisteps_form")[0]);
+    $.ajax({
+        type: 'POST',
+        url: "/tes-online/store",
+        processData: false,
+        contentType: false,
+        data: postData,
+        success: function (response) {
+            Swal.fire(
+                'Success!',
+                response.message,
+                'success'
+            ).then(function () {
+                window.location.href = '/tes-online/thank';
+            });
+        }
+    });
+}
 
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
@@ -75,7 +82,7 @@ function nextPrev(n) {
     // if you have reached the end of the form... :
     if (currentTab >= x.length) {
         //...the form gets submitted:
-        document.getElementById("wizard").submit();
+        simpan();
         return false;
     }
     // Otherwise, display the correct tab:
