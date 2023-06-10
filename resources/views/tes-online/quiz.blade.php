@@ -152,19 +152,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
-            for (let index = 1; index < "{{ count($soals) }}" + 1; index++) {
-                $(`.step_${index}`).on('click', function() {
+            for (let index = 1; index <= "{{ count($soals) }}"; index++) {
+                $(`.step_${index}`).on('click', function(e) {
                     $(`.step_${index}`).removeClass("active");
                     $(this).addClass("active");
-                    var target = this;
-                    $($(this).parent().parent().parent().find('input[type="radio"]')).each(function(index,
-                        element) {
-                        if ($(element).get(0) == $(target).find('input[type="radio"]').get(0)) {
-                            $($(target).find('input[type="radio"]')).attr('checked', true);
-                        } else {
-                            $(element).attr('checked', false);
-                        }
-                    });
                 });
             }
         });

@@ -32,6 +32,9 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::post('/home/store', [HomeController::class, 'store'])->name('home.store');
+    Route::get('/home/{siswaPembayaran}/edit', [HomeController::class, 'store'])->name('home.store');
+    Route::post('/home/{siswaPembayaran}/update', [HomeController::class, 'update'])->name('home.store');
 
     Route::middleware(['role:siswa'])->group(function () {
         Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');

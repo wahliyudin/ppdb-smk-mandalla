@@ -23,6 +23,13 @@
                                                 ])
                                             @break
 
+                                            @case(\App\Enums\Proses\Status::VERIFIKASI)
+                                                @include('alerts.warning', [
+                                                    'message' =>
+                                                        'Anda belum melakukan pembayaran biaya pendaftaran sebesar Rp. 50.000! <br> Silahkan kirim ke nomor rekening <strong>345678876543</strong>',
+                                                ])
+                                            @break
+
                                             @case(\App\Enums\Proses\Status::MENUNGGU)
                                                 @if ($siswa->tesOnline?->kesempatan > 0)
                                                     @include('alerts.warning', [
@@ -51,11 +58,15 @@
                                             @case(\App\Enums\Proses\Status::MENUNGGU)
                                                 @include('alerts.warning', [
                                                     'message' =>
-                                                        'Anda belum melakukan pembayaran biaya pendaftaran! <br> Silahkan kirim ke nomor rekening <strong>345678876543</strong>',
+                                                        'Bukti Pembayaran Anda sedang di verifikasi oleh Admin',
                                                 ])
                                             @break
 
                                             @case(\App\Enums\Proses\Status::VERIFIKASI)
+                                                @include('alerts.success', [
+                                                    'message' =>
+                                                        'Selamat!, Anda telah diterima sebagai Siswa SMK MANDALLA <br> Harap tunggu info selanjutnya!!!!!!',
+                                                ])
                                             @break
 
                                             @default
@@ -96,8 +107,7 @@
                                 @endswitch
 
                                 @if ($proses?->proses == \App\Enums\Proses\Proses::PEMBAYARAN && $proses->status == \App\Enums\Proses\Status::MENUNGGU)
-                                    <button class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#create-pembayaran">Input
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-home">Input
                                         Bukti Pembayaran</button>
                                 @endif
                             </div>
@@ -116,9 +126,23 @@
                                 @break
 
                                 @case(\App\Enums\Proses\Proses::PEMBAYARAN)
-                                    <img style="width: 100%; height: auto;"
-                                        src="{{ asset('assets/media/illustrations/unitedpalms-1/11.png') }}" alt=""
-                                        srcset="">
+                                    @switch($proses?->status)
+                                        @case(\App\Enums\Proses\Status::MENUNGGU)
+                                            <img style="width: 100%; height: auto;"
+                                                src="{{ asset('assets/media/illustrations/unitedpalms-1/11.png') }}" alt=""
+                                                srcset="">
+                                        @break
+
+                                        @case(\App\Enums\Proses\Status::VERIFIKASI)
+                                            <img style="width: 100%; height: auto;"
+                                                src="{{ asset('assets/media/illustrations/dozzy-1/7.png') }}" alt="" srcset="">
+                                        @break
+
+                                        @default
+                                            <img style="width: 100%; height: auto;"
+                                                src="{{ asset('assets/media/illustrations/unitedpalms-1/11.png') }}" alt=""
+                                                srcset="">
+                                    @endswitch
                                 @break
 
                                 @case(\App\Enums\Proses\Proses::DOKUMEN)
@@ -148,13 +172,13 @@
 @endsection
 
 @push('modal')
-    <div class="modal fade" id="create-pembayaran" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="create-home" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered mw-650px">
             <div class="modal-content">
-                <form class="form" action="#" id="create-pembayaran_form">
-                    <div class="modal-header" id="create-pembayaran_header">
+                <form class="form" action="#" id="create-home_form">
+                    <div class="modal-header" id="create-home_header">
                         <h2 class="fw-bold">Bukti Pembayaran</h2>
-                        <div id="create-pembayaran_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+                        <div id="create-home_close" class="btn btn-icon btn-sm btn-active-icon-primary">
                             <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
                         </div>
                     </div>
@@ -166,10 +190,10 @@
                         </div>
                     </div>
                     <div class="modal-footer flex-center">
-                        <button type="reset" id="create-pembayaran_cancel" class="btn btn-light me-3">
+                        <button type="reset" id="create-home_cancel" class="btn btn-light me-3">
                             Discard
                         </button>
-                        <button type="submit" data-akun="" id="create-pembayaran_submit" class="btn btn-primary">
+                        <button type="button" data-akun="" id="create-home_submit" class="btn btn-primary">
                             <span class="indicator-label">
                                 Submit
                             </span>
@@ -182,4 +206,146 @@
             </div>
         </div>
     </div>
+@endpush
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('.create-home').click(function(e) {
+                e.preventDefault();
+                $('.create-home .btn-save').addClass(
+                    'store-home');
+                $('.create-home .btn-save').removeClass(
+                    'update-home');
+                $('.create-home .btn-save').data('item', '');
+                $('.form-home input[name="file"]').val('');
+            });
+
+            $('#create-home').on('click', '#create-home_submit', function(e) {
+                e.preventDefault();
+                var postData = new FormData($("#create-home_form")[0]);
+                $('#create-home_submit .spin').show();
+                var target = this;
+                $(this).attr("data-kt-indicator", "on");
+                $.ajax({
+                    type: 'POST',
+                    url: "/home/store",
+                    processData: false,
+                    contentType: false,
+                    data: postData,
+                    success: function(response) {
+                        $(target).removeAttr("data-kt-indicator");
+                        $('#create-home').modal('hide');
+                        Swal.fire(
+                            'Success!',
+                            response.message,
+                            'success'
+                        ).then(function() {
+                            location.reload();
+                        });
+                    },
+                    error: function(jqXHR) {
+                        if (jqXHR.status == 422) {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Peringatan!',
+                                text: JSON.parse(jqXHR.responseText)
+                                    .message,
+                            }).then(function() {
+                                $(target).removeAttr("data-kt-indicator");
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: jqXHR.responseText,
+                            }).then(function() {
+                                $(target).removeAttr("data-kt-indicator");
+                            })
+                        }
+                    }
+                });
+            });
+
+            $('#table-home').on('click', '.edit-home', function(e) {
+                e.preventDefault();
+                var home = $(this).data('home');
+                var target = this;
+                $.ajax({
+                    type: "GET",
+                    url: `/home/${home}/edit`,
+                    dataType: "JSON",
+                    success: function(response) {
+                        $('#create-home .btn-save').data('home', response.key);
+                        $('#create-home .btn-save').addClass('update-home');
+                        $('#create-home .btn-save').removeClass('store-home');
+                        $('#create-home').modal('show');
+                    },
+                    error: function(jqXHR) {
+                        if (jqXHR.status == 422) {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Peringatan!',
+                                text: JSON.parse(jqXHR.responseText)
+                                    .message,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: jqXHR.responseText,
+                            })
+                        }
+                    }
+                });
+            });
+
+            $('#create-home').on('click', '.update-home', function(e) {
+                e.preventDefault();
+                var postData = new FormData($("#create-home_form")[0]);
+                var home = $(this).data('home');
+                $(this).attr("data-kt-indicator", "on");
+                $.ajax({
+                    type: 'POST',
+                    url: `/home/${home}/update`,
+                    processData: false,
+                    contentType: false,
+                    data: postData,
+                    success: function(response) {
+                        $(this).removeAttr("data-kt-indicator");
+                        $('#create-home').modal('hide');
+                        Swal.fire(
+                            'Success!',
+                            response.message,
+                            'success'
+                        ).then(function() {
+                            location.reload();
+                        });
+                    },
+                    error: function(jqXHR) {
+                        if (jqXHR.status == 422) {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Peringatan!',
+                                text: JSON.parse(jqXHR.responseText)
+                                    .message,
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: jqXHR.responseText,
+                            })
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

@@ -23,9 +23,9 @@ class TesOnlineController extends Controller
             $siswa = Siswa::query()->with(['lastProses' => function ($query) {
                 $query->where('proses', Proses::TES_ONLINE)->where('status', Status::TOLAK);
             }])->withWhereHas('tesOnline.tesOnlines')->findOrFail($siswaId);
-            if ($siswa?->tesOnline?->kesempatan <= 1 && isset($siswa->lastProses)) {
-                return to_route('tes-online.thank');
-            }
+            // if ($siswa?->tesOnline?->kesempatan <= 1 && isset($siswa->lastProses)) {
+            //     return to_route('tes-online.thank');
+            // }
             $soals = $siswa->tesOnline?->tesOnlines;
             $siswaId = $request->siswa;
             $tglMulai = $siswa->tesOnline?->tgl_mulai;
@@ -58,7 +58,6 @@ class TesOnlineController extends Controller
                         'jawaban' => $value
                     ]);
             }
-
             $siswa = Siswa::query()->with('tesOnline.tesOnlines')->find($siswaId);
             $total = 0;
             foreach ($siswa->tesOnline->tesOnlines as $tes) {
@@ -73,10 +72,6 @@ class TesOnlineController extends Controller
                 ], [
                     'proses' => Proses::TES_ONLINE,
                     'status' => Status::VERIFIKASI,
-                ]);
-                $siswa->proses()->create([
-                    'proses' => Proses::PEMBAYARAN,
-                    'status' => Status::MENUNGGU,
                 ]);
             } else {
                 if ($siswa->tesOnline?->kesempatan > 1) {
