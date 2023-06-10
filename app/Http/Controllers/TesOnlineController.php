@@ -23,20 +23,25 @@ class TesOnlineController extends Controller
             $siswa = Siswa::query()->with(['lastProses' => function ($query) {
                 $query->where('proses', Proses::TES_ONLINE)->where('status', Status::TOLAK);
             }])->withWhereHas('tesOnline.tesOnlines')->findOrFail($siswaId);
-            if ($siswa?->tesOnline?->kesempatan <= 0 && isset($siswa->lastProses)) {
+            if ($siswa?->tesOnline?->kesempatan <= 1 && isset($siswa->lastProses)) {
                 return to_route('tes-online.thank');
             }
             $soals = $siswa->tesOnline?->tesOnlines;
             $siswaId = $request->siswa;
+            $tglMulai = $siswa->tesOnline?->tgl_mulai;
+            $jamMulai = $siswa->tesOnline?->jam_mulai;
             if ($siswa?->tesOnline?->tgl_mulai == null) {
                 $siswa->tesOnline()?->update([
                     'tgl_mulai' => now()->format('Y-m-d'),
                     'jam_mulai' => now()->format('H:i:s'),
                 ]);
+                $tglMulai = now()->format('Y-m-d');
+                $jamMulai = now()->format('H:i:s');
             }
-            $waktu = Carbon::parse($siswa->tesOnline?->tgl_mulai)->format('Y/m/d') . ' ' . Carbon::createFromFormat('H:i:s', $siswa->tesOnline?->jam_mulai)->addMinutes(90)->format('H:i:s');
+            $waktu = Carbon::parse($tglMulai)->format('Y/m/d') . ' ' . Carbon::createFromFormat('H:i:s', $jamMulai)->addMinutes(90)->format('H:i:s');
             return view('tes-online.quiz', compact('soals', 'siswaId', 'waktu'));
         } catch (\Throwable $th) {
+            dd($th->getMessage());
             abort(403);
         }
     }
@@ -74,8 +79,10 @@ class TesOnlineController extends Controller
                     'status' => Status::MENUNGGU,
                 ]);
             } else {
-                if ($siswa->tesOnline?->kesempatan > 0) {
+                if ($siswa->tesOnline?->kesempatan > 1) {
                     $siswa->tesOnline()->update([
+                        'tgl_mulai' => null,
+                        'jam_mulai' => null,
                         'kesempatan' => ($siswa->tesOnline?->kesempatan - 1 <= 0 ? 0 : ($siswa->tesOnline?->kesempatan - 1))
                     ]);
                 } else {

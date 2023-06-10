@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizo HTML Template - V.5</title>
+    <title>Tes Online</title>
     <!-- FontAwesome-cdn include -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('frontend/quiz/css/all.min.css') }}">

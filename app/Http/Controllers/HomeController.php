@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::query()->with('proses')->where('user_id', auth()->user()?->id)->first();
+        $siswa = Siswa::query()->with(['proses', 'tesOnline'])->where('user_id', auth()->user()?->id)->first();
         $proses = Proses::query()->where('siswa_id', $siswa?->getKey())->latest()?->first();
-        return view('home', compact('proses'));
+        return view('home', compact('proses', 'siswa'));
     }
 }
