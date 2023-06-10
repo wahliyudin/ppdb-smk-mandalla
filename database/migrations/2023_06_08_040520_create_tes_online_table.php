@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('siswa_tes_online_id');
             $table->unsignedBigInteger('soal_id');
-            $table->enum('jawaban', ['a', 'b', 'c', 'd']);
+            $table->enum('jawaban', ['a', 'b', 'c', 'd'])->nullable();
             $table->timestamps();
         });
     }

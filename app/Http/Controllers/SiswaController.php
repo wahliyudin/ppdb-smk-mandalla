@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Proses\Proses;
+use App\Enums\Proses\Status;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -15,7 +17,9 @@ class SiswaController extends Controller
 
     public function datatable()
     {
-        $data = Siswa::query()->get();
+        $data = Siswa::query()->whereHas('proses', function ($query) {
+            $query->where('proses', Proses::PEMBAYARAN)->where('status', Status::VERIFIKASI);
+        })->get();
         return DataTables::of($data)
             ->editColumn('jenis_kelamin', function (Siswa $siswa) {
                 return $siswa->jenis_kelamin->label();

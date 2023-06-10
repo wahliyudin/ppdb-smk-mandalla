@@ -7,6 +7,7 @@ use App\Enums\Proses\Status;
 use App\Http\Controllers\Controller;
 use App\Jobs\TesOnline;
 use App\Models\Siswa;
+use App\Models\SiswaTesOnline;
 use App\Models\Soal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -56,7 +57,9 @@ class CalonSiswaController extends Controller
                 'proses' => Proses::TES_ONLINE,
                 'status' => Status::MENUNGGU,
             ]);
-            $tesOnline = $siswa->tesOnline()->create([]);
+            $tesOnline = $siswa->tesOnline()->create([
+                'kesempatan' => SiswaTesOnline::KESEMPATAN
+            ]);
             $soals = Soal::query()->where('status', true)->pluck('id')->toArray();
             $tesOnline->tesOnlines()->sync($soals);
             $tesOnline = URL::temporarySignedRoute(

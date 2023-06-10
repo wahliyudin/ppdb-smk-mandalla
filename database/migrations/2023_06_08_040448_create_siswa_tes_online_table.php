@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('siswa_tes_online', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('siswa_id');
+            $table->integer('kesempatan')->nullable();
             $table->date('tgl_mulai')->nullable();
             $table->time('jam_mulai')->nullable();
             $table->date('tgl_selesai')->nullable();

@@ -6,6 +6,7 @@ use App\Enums\Proses\Proses;
 use App\Enums\Proses\Status;
 use App\Models\Siswa;
 use App\Models\SiswaTesOnline;
+use App\Models\TesOnline;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -19,8 +20,10 @@ class TesOnlineController extends Controller
                 abort(403);
             }
             $siswaId = Crypt::decrypt($request->siswa);
-            $siswa = Siswa::query()->withWhereHas('tesOnline.tesOnlines')->findOrFail($siswaId);
-            if ($siswa?->tesOnline?->tgl_selesai != null) {
+            $siswa = Siswa::query()->with(['lastProses' => function ($query) {
+                $query->where('proses', Proses::TES_ONLINE)->where('status', Status::TOLAK);
+            }])->withWhereHas('tesOnline.tesOnlines')->findOrFail($siswaId);
+            if ($siswa?->tesOnline?->kesempatan <= 0 && isset($siswa->lastProses)) {
                 return to_route('tes-online.thank');
             }
             $soals = $siswa->tesOnline?->tesOnlines;
@@ -42,13 +45,13 @@ class TesOnlineController extends Controller
     {
         try {
             $siswaId = Crypt::decrypt($request->siswa);
-            $tesOnline = SiswaTesOnline::query()->where('siswa_id', $siswaId)->first();
+            $tesOnline = SiswaTesOnline::query()->with('tesOnlines')->where('siswa_id', $siswaId)->first();
             foreach ($request->jawab as $key => $value) {
-                $tesOnline->tesOnlines()->updateOrCreate([
-                    'soal_id' => $key
-                ], [
-                    'jawaban' => $value
-                ]);
+                TesOnline::query()->where('siswa_tes_online_id', $tesOnline->getKey())
+                    ->where('soal_id', $key)
+                    ->first()->update([
+                        'jawaban' => $value
+                    ]);
             }
 
             $siswa = Siswa::query()->with('tesOnline.tesOnlines')->find($siswaId);
@@ -71,12 +74,18 @@ class TesOnlineController extends Controller
                     'status' => Status::MENUNGGU,
                 ]);
             } else {
-                $siswa->proses()->updateOrCreate([
-                    'proses' => Proses::TES_ONLINE,
-                ], [
-                    'proses' => Proses::TES_ONLINE,
-                    'status' => Status::TOLAK,
-                ]);
+                if ($siswa->tesOnline?->kesempatan > 0) {
+                    $siswa->tesOnline()->update([
+                        'kesempatan' => ($siswa->tesOnline?->kesempatan - 1 <= 0 ? 0 : ($siswa->tesOnline?->kesempatan - 1))
+                    ]);
+                } else {
+                    $siswa->proses()->updateOrCreate([
+                        'proses' => Proses::TES_ONLINE,
+                    ], [
+                        'proses' => Proses::TES_ONLINE,
+                        'status' => Status::TOLAK,
+                    ]);
+                }
             }
             $tesOnline->update([
                 'tgl_selesai' => now()->format('Y-m-d'),

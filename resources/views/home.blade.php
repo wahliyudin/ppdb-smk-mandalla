@@ -33,7 +33,7 @@
                                             @case(\App\Enums\Proses\Status::MENUNGGU)
                                                 @include('alerts.warning', [
                                                     'message' =>
-                                                        'Anda belum melakukan pembayaran biaya pendaftaran! <br> Silahkan bayar <a href="" class="underline">disini</a>',
+                                                        'Anda belum melakukan pembayaran biaya pendaftaran! <br> Silahkan kirim ke nomor rekening <strong>345678876543</strong>',
                                                 ])
                                             @break
 
@@ -53,7 +53,7 @@
                                             @case(\App\Enums\Proses\Status::MENUNGGU)
                                                 @include('alerts.warning', [
                                                     'message' =>
-                                                        'Biodata Anda sedang di verifikasi!! <br> Silahkan bayar <a href="" class="underline">disini</a>',
+                                                        'Biodata Anda sedang di verifikasi!! <br> Silahkan tunggu email pemberitahuan',
                                                 ])
                                             @break
 
@@ -67,12 +67,54 @@
                                                 ])
                                         @endswitch
                                     @break
+
+                                    @default
+                                        @include('alerts.warning', [
+                                            'message' =>
+                                                'Anda belum melengkapi biodata!! <br> Silahkan lengkapi <a href="' .
+                                                route('pendaftaran.index') .
+                                                '" class="underline">disini</a>',
+                                        ])
                                 @endswitch
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img style="width: 100%; height: auto;" src="assets/media/illustrations/dozzy-1/7.png" alt=""
-                                srcset="">
+                            @switch($proses?->proses)
+                                @case(\App\Enums\Proses\Proses::TES_ONLINE)
+                                    @if (\App\Enums\Proses\Status::TOLAK == $proses?->status)
+                                        <img style="width: 100%; height: auto;"
+                                            src="{{ asset('assets/media/illustrations/sigma-1/4.png') }}" alt="" srcset="">
+                                    @else
+                                        <img style="width: 100%; height: auto;"
+                                            src="{{ asset('assets/media/illustrations/unitedpalms-1/16.png') }}" alt=""
+                                            srcset="">
+                                    @endif
+                                @break
+
+                                @case(\App\Enums\Proses\Proses::PEMBAYARAN)
+                                    <img style="width: 100%; height: auto;"
+                                        src="{{ asset('assets/media/illustrations/unitedpalms-1/11.png') }}" alt=""
+                                        srcset="">
+                                @break
+
+                                @case(\App\Enums\Proses\Proses::DOKUMEN)
+                                    @switch($proses?->status)
+                                        @case(\App\Enums\Proses\Status::MENUNGGU)
+                                            <img style="width: 100%; height: auto;"
+                                                src="{{ asset('assets/media/illustrations/sketchy-1/2.png') }}" alt="" srcset="">
+                                        @break
+
+                                        @case(\App\Enums\Proses\Status::VERIFIKASI)
+                                        @break
+
+                                        @default
+                                    @endswitch
+                                @break
+
+                                @default
+                                    <img style="width: 100%; height: auto;"
+                                        src="{{ asset('assets/media/illustrations/dozzy-1/7.png') }}" alt="" srcset="">
+                            @endswitch
                         </div>
                     </div>
                 </div>

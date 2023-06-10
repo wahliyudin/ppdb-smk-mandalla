@@ -9,10 +9,13 @@ class SiswaTesOnline extends Model
 {
     use HasFactory;
 
+    const KESEMPATAN = 3;
+
     protected $table = 'siswa_tes_online';
 
     protected $fillable = [
         'siswa_id',
+        'kesempatan',
         'tgl_mulai',
         'jam_mulai',
         'tgl_selesai',

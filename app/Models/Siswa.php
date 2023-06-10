@@ -54,6 +54,11 @@ class Siswa extends Model
         return $this->hasMany(Proses::class, 'siswa_id', 'id');
     }
 
+    public function lastProses()
+    {
+        return $this->hasOne(Proses::class, 'siswa_id', 'id')->latestOfMany();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

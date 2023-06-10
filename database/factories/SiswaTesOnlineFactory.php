@@ -19,6 +19,7 @@ class SiswaTesOnlineFactory extends Factory
     {
         return [
             'siswa_id' => fake()->randomElement(Siswa::query()->pluck('id')->toArray()),
+            'kesempatan' => 3,
             'tgl_mulai' => fake()->date(),
             'jam_mulai' => fake()->time(),
             'tgl_selesai' => fake()->date(),
