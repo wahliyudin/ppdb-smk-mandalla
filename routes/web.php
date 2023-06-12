@@ -9,6 +9,7 @@ use App\Http\Controllers\Proses\TesOnlineController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\TesOnlineController as ControllersTesOnlineController;
+use App\Jobs\TesOnline;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    dispatch(new TesOnline('wahliyudinzein@gmail.com', 'hello'));
     return view('welcome');
 });
 
