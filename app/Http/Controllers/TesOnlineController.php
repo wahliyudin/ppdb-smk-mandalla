@@ -41,7 +41,6 @@ class TesOnlineController extends Controller
             $waktu = Carbon::parse($tglMulai)->format('Y/m/d') . ' ' . Carbon::createFromFormat('H:i:s', $jamMulai)->addMinutes(90)->format('H:i:s');
             return view('tes-online.quiz', compact('soals', 'siswaId', 'waktu'));
         } catch (\Throwable $th) {
-            dd($th->getMessage());
             abort(403);
         }
     }

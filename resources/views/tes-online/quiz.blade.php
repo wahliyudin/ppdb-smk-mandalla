@@ -80,16 +80,16 @@
                         <div class="row pt-3">
                             <ul class="text-center">
                                 <li
-                                    class="position-relative step_{{ $loop->iteration }} d-inline-block animate__animated animate__fadeInRight animate_50ms ">
-                                    <input id="opt_1" type="radio" name="jawab[{{ $soal->getKey() }}]"
+                                    class="step_{{ $loop->iteration }} position-relative  d-inline-block animate__animated animate__fadeInRight animate_50ms ">
+                                    <input id="opt_1" type="checkbox" name="jawab[{{ $soal->id }}]"
                                         value="a">
                                     <label for="opt_1">{{ $soal->pilihan_a }}</label>
                                     <span class="position-absolute">A</span>
                                 </li>
                                 <li
                                     class="step_{{ $loop->iteration }} position-relative d-inline-block animate__animated animate__fadeInRight animate_100ms">
-                                    <input id="opt_2" type="radio" name="jawab[{{ $soal->getKey() }}]"
-                                        value="b" checked>
+                                    <input id="opt_2" type="checkbox" name="jawab[{{ $soal->id }}]"
+                                        value="b">
                                     <label for="opt_2">{{ $soal->pilihan_b }}</label>
                                     <span class="position-absolute">B</span>
                                 </li>
@@ -99,14 +99,14 @@
                             <ul class="text-center">
                                 <li
                                     class="step_{{ $loop->iteration }} position-relative d-inline-block animate__animated animate__fadeInRight animate_150ms">
-                                    <input id="opt_3" type="radio" name="jawab[{{ $soal->getKey() }}]"
+                                    <input id="opt_3" type="checkbox" name="jawab[{{ $soal->id }}]"
                                         value="c">
                                     <label for="opt_3">{{ $soal->pilihan_c }}</label>
                                     <span class="position-absolute">C</span>
                                 </li>
                                 <li
                                     class="step_{{ $loop->iteration }} position-relative d-inline-block animate__animated animate__fadeInRight animate_200ms">
-                                    <input id="opt_4" type="radio" name="jawab[{{ $soal->getKey() }}]"
+                                    <input id="opt_4" type="checkbox" name="jawab[{{ $soal->id }}]"
                                         value="d">
                                     <label for="opt_4">{{ $soal->pilihan_d }}</label>
                                     <span class="position-absolute">D</span>
@@ -152,10 +152,35 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
+            var target;
             for (let index = 1; index <= "{{ count($soals) }}"; index++) {
+                var i = 2;
                 $(`.step_${index}`).on('click', function(e) {
-                    $(`.step_${index}`).removeClass("active");
-                    $(this).addClass("active");
+                    if ($(e.target).is(`li`)) {
+                        checkUnCheck(this)
+                    } else {
+                        if (i % 2 == 0) {
+                            checkUnCheck(this)
+                        }
+                    }
+                    i++;
+                });
+            }
+
+            function checkUnCheck(target) {
+                $.each($('.multisteps_form li'), function(indexInArray, valueOfElement) {
+                    var classList = $(target).attr('class').split(/\s+/);
+                    if ($(valueOfElement).hasClass(classList[0])) {
+                        if ($(valueOfElement).find('input[type="checkbox"]').get(0) !=
+                            $(target).find('input[type="checkbox"]').get(0)) {
+                            $($(valueOfElement).find('input[type="checkbox"]').get(0))
+                                .attr('checked', false);
+                            $(valueOfElement).removeClass("active");
+                        } else {
+                            $(valueOfElement).addClass("active");
+                            $($(target).find('input[type="checkbox"]').get(0)).attr('checked', true);
+                        }
+                    }
                 });
             }
         });

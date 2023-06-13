@@ -33,6 +33,11 @@ $(function () {
 
 function simpan() {
     var postData = new FormData($(".multisteps_form")[0]);
+    // $.each($('.multisteps_form li'), function (indexInArray, valueOfElement) {
+    //     if ($($(valueOfElement).find('input[type="checkbox"]').get(0)).is(':checked')) {
+    //         console.log(valueOfElement);
+    //     }
+    // });
     $.ajax({
         type: 'POST',
         url: "/tes-online/store",
