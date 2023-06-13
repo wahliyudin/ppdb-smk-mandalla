@@ -110,6 +110,10 @@
                                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-home">Input
                                         Bukti Pembayaran</button>
                                 @endif
+                                @if ($proses?->proses == \App\Enums\Proses\Proses::PEMBAYARAN && $proses->status == \App\Enums\Proses\Status::TOLAK)
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-home">Input
+                                        Bukti Pembayaran</button>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
