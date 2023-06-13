@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('siswa_id');
             $table->enum('proses', [1, 2, 3]);
             $table->enum('status', [1, 2, 3]);
+            $table->string('alasan')->nullable();
             $table->timestamps();
 
             $table->foreign('siswa_id')->references('id')->on('siswa')->cascadeOnDelete();

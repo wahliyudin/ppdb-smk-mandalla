@@ -18,6 +18,7 @@ class SiswaIdentitas extends Model
         'nik',
         'jumlah_saudara',
         'anak_ke',
+        'dari',
         'agama',
         'suku',
         'asal_sekolah',

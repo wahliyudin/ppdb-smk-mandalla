@@ -76,11 +76,12 @@ class CalonSiswaController extends Controller
         }
     }
 
-    public function tolak(Siswa $siswa)
+    public function tolak(Request $request, Siswa $siswa)
     {
         try {
             $siswa->proses()->where('proses', Proses::DOKUMEN)->where('status', Status::MENUNGGU)->update([
-                'status' => Status::TOLAK
+                'status' => Status::TOLAK,
+                'alasan' => $request->notes
             ]);
             return response()->json([
                 'message' => 'Berhasil di tolak'

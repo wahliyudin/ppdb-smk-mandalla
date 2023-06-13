@@ -31,7 +31,7 @@
                                             @break
 
                                             @case(\App\Enums\Proses\Status::MENUNGGU)
-                                                @if ($siswa->tesOnline?->kesempatan > 0)
+                                                @if ($siswa->tesOnline?->kesempatan < 3)
                                                     @include('alerts.warning', [
                                                         'message' =>
                                                             'Anda gagal di tes online ke ' .

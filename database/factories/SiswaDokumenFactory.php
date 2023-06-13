@@ -20,7 +20,7 @@ class SiswaDokumenFactory extends Factory
         return [
             'siswa_id' => fake()->randomElement(Siswa::query()->pluck('id')->toArray()),
             'ijazah' => fake()->name(),
-            'kk' => fake()->name(),
+            'ktp_orang_tua' => fake()->name(),
             'kip' => fake()->name(),
             'pkh' => fake()->name(),
             'kks' => fake()->name(),

@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dispatch(new TesOnline('wahliyudinzein@gmail.com', 'hello'));
     return view('welcome');
 });
 
@@ -40,9 +39,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['role:siswa'])->group(function () {
         Route::get('biodata', [BiodataController::class, 'index'])->name('biodata.index');
+        Route::get('biodata/{siswa}/edit', [BiodataController::class, 'edit'])->name('biodata.edit');
 
         Route::get('pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran.index');
         Route::post('pendaftaran/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+        Route::post('pendaftaran/{siswa}/update', [PendaftaranController::class, 'update'])->name('pendaftaran.update');
 
         Route::get('tes-online/mulai', [ControllersTesOnlineController::class, 'index'])->name('tes-online.mulai')->middleware('signed');
         Route::post('tes-online/store', [ControllersTesOnlineController::class, 'store'])->name('tes-online.store');

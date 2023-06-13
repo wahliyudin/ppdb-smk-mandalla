@@ -391,71 +391,65 @@ var KTCalonSiswasList = function () {
             var target = this;
             $(target).attr("data-kt-indicator", "on");
             Swal.fire({
-                text: "Are you sure you want to tolak ?",
-                icon: "warning",
+                title: "Tolak?",
+                text: "Masukan alasan kenapa ditolak!",
+                input: 'textarea',
+                icon: 'warning',
+                inputPlaceholder: 'Catatan',
                 showCancelButton: true,
-                buttonsStyling: false,
-                confirmButtonText: "Yes, tolak!",
-                cancelButtonText: "No, cancel",
-                customClass: {
-                    confirmButton: "btn fw-bold btn-danger",
-                    cancelButton: "btn fw-bold btn-active-light-primary"
-                }
-            }).then(function (result) {
-                if (result.value) {
-                    $.ajax({
+                confirmButtonText: 'Ya, tolak!',
+                cancelButtonText: "Batal",
+                reverseButtons: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                showLoaderOnConfirm: true,
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'Catatan tidak boleh kosong!'
+                    }
+                },
+                preConfirm: async (val) => {
+                    return await $.ajax({
                         type: "POST",
                         url: `/calon-siswa/${calonSiswa}/tolak`,
-                        dataType: "JSON",
-                        success: function (response) {
-                            $(target).removeAttr("data-kt-indicator");
-                            Swal.fire({
-                                text: "You have tolak !.",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary",
-                                }
-                            }).then(function () {
+                        data: {
+                            notes: val
+                        },
+                        dataType: 'JSON',
+                    })
+                        .done(function (myAjaxJsonResponse) {
+                            Swal.fire(
+                                'Rejected!',
+                                myAjaxJsonResponse.message,
+                                'success'
+                            ).then(function () {
+                                $(target).removeAttr("data-kt-indicator");
                                 datatable.ajax.reload();
                             });
-                        },
-                        error: function (jqXHR) {
-                            if (jqXHR.status == 422) {
+                        })
+                        .fail(function (erordata) {
+                            if (erordata.status == 422) {
                                 Swal.fire({
-                                    icon: 'warning',
-                                    title: 'Peringatan!',
-                                    text: JSON.parse(jqXHR.responseText).message,
+                                    icon: 'error',
+                                    title: 'Warning!',
+                                    text: erordata.responseJSON
+                                        .message,
                                 }).then(function () {
                                     $(target).removeAttr("data-kt-indicator");
-                                });
+                                })
                             } else {
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Error!',
-                                    text: jqXHR.responseText,
+                                    title: 'Oops...',
+                                    text: erordata.responseJSON
+                                        .message,
                                 }).then(function () {
                                     $(target).removeAttr("data-kt-indicator");
-                                });
+                                })
                             }
-                        }
-                    });
-                } else if (result.dismiss === 'cancel') {
-                    Swal.fire({
-                        text: "was not tolak.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-primary",
-                        }
-                    }).then(function () {
-                        $(target).removeAttr("data-kt-indicator");
-                    });
+                        })
                 }
             });
-
         });
     }
 

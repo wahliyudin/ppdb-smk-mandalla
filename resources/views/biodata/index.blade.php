@@ -80,6 +80,13 @@
                     <!--end::Info-->
                 </div>
                 <!--end::Details-->
+                @if (
+                    $siswa->lastProses->proses == \App\Enums\Proses\Proses::DOKUMEN &&
+                        $siswa->lastProses->status == \App\Enums\Proses\Status::TOLAK)
+                    @include('alerts.danger', [
+                        'message' => 'Dokumen anda ditolak! <br> ' . $siswa->lastProses->alasan,
+                    ])
+                @endif
             </div>
         </div>
         <!--end::Navbar-->
@@ -127,10 +134,15 @@
                         </div>
                         <!--end::Card title-->
 
-                        <!--begin::Action-->
-                        <a href="settings.html" class="btn btn-sm btn-primary align-self-center">Edit
-                            Biodata</a>
-                        <!--end::Action-->
+                        @if (
+                            $siswa->lastProses->proses == \App\Enums\Proses\Proses::DOKUMEN &&
+                                $siswa->lastProses->status == \App\Enums\Proses\Status::TOLAK)
+                            <!--begin::Action-->
+                            <a href="{{ route('biodata.edit', $siswa->getKey()) }}"
+                                class="btn btn-sm btn-primary align-self-center">Edit
+                                Biodata</a>
+                            <!--end::Action-->
+                        @endif
                     </div>
                     <!--begin::Card header-->
 
@@ -138,7 +150,7 @@
                     <div class="card-body p-9">
 
                         <!--begin::Notice-->
-                        <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed  p-6 mb-7">
+                        {{-- <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed  p-6 mb-7">
                             <!--begin::Icon-->
                             <i class="ki-duotone ki-information fs-2tx text-warning me-4"><span class="path1"></span><span
                                     class="path2"></span><span class="path3"></span></i>
@@ -158,7 +170,7 @@
 
                             </div>
                             <!--end::Wrapper-->
-                        </div>
+                        </div> --}}
                         <!--end::Notice-->
                         <div class="row">
                             <div class="col-md-6">
@@ -354,10 +366,6 @@
                         </div>
                         <!--end::Card title-->
 
-                        <!--begin::Action-->
-                        <a href="settings.html" class="btn btn-sm btn-primary align-self-center">Edit
-                            Orang Tua</a>
-                        <!--end::Action-->
                     </div>
                     <!--begin::Card header-->
 
@@ -509,10 +517,6 @@
                         </div>
                         <!--end::Card title-->
 
-                        <!--begin::Action-->
-                        <a href="settings.html" class="btn btn-sm btn-primary align-self-center">Edit
-                            Dokumen</a>
-                        <!--end::Action-->
                     </div>
                     <!--begin::Card header-->
 
@@ -596,17 +600,17 @@
                             </div>
                             <div class="row col-md-3 mb-7">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 fw-semibold text-muted">KK</label>
+                                <label class="col-lg-4 fw-semibold text-muted">KTP Orang Tua</label>
                                 <!--end::Label-->
 
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <a class="d-block overlay" style="background-color: #00000033; border-radius: 10px;"
                                         data-fslightbox="lightbox-basic"
-                                        href="{{ asset("storage/dokumen/{$siswa->dokumen?->kk}") }}">
+                                        href="{{ asset("storage/dokumen/{$siswa->dokumen?->ktp_orang_tua}") }}">
                                         <!--begin::Image-->
                                         <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
-                                            style="background-image:url('{{ asset("storage/dokumen/{$siswa->dokumen?->kk}") }}')">
+                                            style="background-image:url('{{ asset("storage/dokumen/{$siswa->dokumen?->ktp_orang_tua}") }}')">
                                         </div>
                                         <!--end::Image-->
 

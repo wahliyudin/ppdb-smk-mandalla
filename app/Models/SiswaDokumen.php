@@ -14,7 +14,7 @@ class SiswaDokumen extends Model
     protected $fillable = [
         'siswa_id',
         'ijazah',
-        'kk',
+        'ktp_orang_tua',
         'kip',
         'pkh',
         'kks',

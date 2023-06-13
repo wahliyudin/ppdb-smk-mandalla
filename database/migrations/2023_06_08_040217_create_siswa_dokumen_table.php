@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('siswa_id');
             $table->string('ijazah');
-            $table->string('kk');
+            $table->string('ktp_orang_tua');
             $table->string('kip')->nullable();
             $table->string('pkh')->nullable();
             $table->string('kks')->nullable();

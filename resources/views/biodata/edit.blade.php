@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'Form Pendaftaran')
+@section('title', 'Form Edit Biodata')
 
 @section('toolbar')
     <div id="kt_app_toolbar" class="app-toolbar  py-3 py-lg-6 ">
         <div id="kt_app_toolbar_container" class="app-container  container-xxl d-flex flex-stack ">
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
                 <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                    Form Pendaftaran
+                    Form Edit Biodata
                 </h1>
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                    <li class="breadcrumb-item text-muted">Form Pendaftaran</li>
+                    <li class="breadcrumb-item text-muted">Form Edit Biodata</li>
                 </ul>
             </div>
         </div>
@@ -190,27 +190,31 @@
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Nama</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama_ayah" />
+                                            name="nama_ayah" value="{{ $siswa->orangTua?->nama_ayah }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid" value="{{ now()->format('Y-m-d') }}"
-                                            placeholder="Tanggal Lahir" name="tanggal_lahir_ayah" id="tanggal_lahir_ayah" />
+                                            placeholder="Tanggal Lahir" name="tanggal_lahir_ayah"
+                                            value="{{ $siswa->orangTua?->tanggal_lahir_ayah }}" id="tanggal_lahir_ayah" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tempat Lahir</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Tempat Lahir" name="tempat_lahir_ayah" />
+                                            placeholder="Tempat Lahir" name="tempat_lahir_ayah"
+                                            value="{{ $siswa->orangTua?->tempat_lahir_ayah }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Pekerjaan</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Pekerjaan" name="pekerjaan_ayah" />
+                                            placeholder="Pekerjaan" name="pekerjaan_ayah"
+                                            value="{{ $siswa->orangTua?->pekerjaan_ayah }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">No. Telp</label>
                                         <input type="number" class="form-control form-control-solid"
-                                            placeholder="No. Telp" name="no_telp_ayah" />
+                                            placeholder="No. Telp" name="no_telp_ayah"
+                                            value="{{ $siswa->orangTua?->no_telp_ayah }}" />
                                     </div>
                                 </div>
                             </div>
@@ -222,28 +226,32 @@
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Nama</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama_ibu" />
+                                            name="nama_ibu" value="{{ $siswa->orangTua?->nama_ibu }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid"
                                             value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal Lahir"
-                                            name="tanggal_lahir_ibu" id="tanggal_lahir_ibu" />
+                                            name="tanggal_lahir_ibu" value="{{ $siswa->orangTua?->tanggal_lahir_ibu }}"
+                                            id="tanggal_lahir_ibu" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tempat Lahir</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Tempat Lahir" name="tempat_lahir_ibu" />
+                                            placeholder="Tempat Lahir" name="tempat_lahir_ibu"
+                                            value="{{ $siswa->orangTua?->tempat_lahir_ibu }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Pekerjaan</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Pekerjaan" name="pekerjaan_ibu" />
+                                            placeholder="Pekerjaan" name="pekerjaan_ibu"
+                                            value="{{ $siswa->orangTua?->pekerjaan_ibu }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">No. Telp</label>
                                         <input type="number" class="form-control form-control-solid"
-                                            placeholder="No. Telp" name="no_telp_ibu" />
+                                            placeholder="No. Telp" name="no_telp_ibu"
+                                            value="{{ $siswa->orangTua?->no_telp_ibu }}" />
                                     </div>
                                 </div>
                             </div>
@@ -255,28 +263,30 @@
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">NIK</label>
                                         <input type="number" class="form-control form-control-solid" placeholder="NIK"
-                                            name="nik_biodata" />
+                                            name="nik_biodata" value="{{ $siswa->identitas?->nik }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">NISN</label>
                                         <input type="number" class="form-control form-control-solid" placeholder="NISN"
-                                            name="nisn_biodata" />
+                                            name="nisn_biodata" value="{{ $siswa->identitas?->nisn }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Nama</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Nama"
-                                            name="nama_biodata" />
+                                            name="nama_biodata" value="{{ $siswa->nama }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tempat Lahir</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Tempat Lahir" name="tempat_lahir_biodata" />
+                                            placeholder="Tempat Lahir" name="tempat_lahir_biodata"
+                                            value="{{ $siswa->tempat_lahir }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tanggal Lahir</label>
                                         <input class="form-control form-control-solid"
                                             value="{{ now()->format('Y-m-d') }}" placeholder="Tanggal Lahir"
-                                            name="tanggal_lahir_biodata" id="tanggal_lahir_biodata" />
+                                            name="tanggal_lahir_biodata" value="{{ $siswa->tanggal_lahir }}"
+                                            id="tanggal_lahir_biodata" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Jenis Kelamin</label>
@@ -284,7 +294,8 @@
                                             data-control="select2" data-placeholder="Jenis Kelamin">
                                             <option></option>
                                             @foreach (\App\Enums\JenisKelamin::cases() as $jenisKelamin)
-                                                <option value="{{ $jenisKelamin->value }}">{{ $jenisKelamin->label() }}
+                                                <option @selected($siswa->jenis_kelamin->value == $jenisKelamin->value) value="{{ $jenisKelamin->value }}">
+                                                    {{ $jenisKelamin->label() }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -292,17 +303,19 @@
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Jumlah Saudara</label>
                                         <input type="number" class="form-control form-control-solid"
-                                            placeholder="Jumlah Saudara" name="jumlah_saudara_biodata" />
+                                            placeholder="Jumlah Saudara" name="jumlah_saudara_biodata"
+                                            value="{{ $siswa->identitas?->jumlah_saudara }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Anak Ke</label>
                                         <input type="number" class="form-control form-control-solid"
-                                            placeholder="Anak Ke" name="anak_ke_biodata" />
+                                            placeholder="Anak Ke" name="anak_ke_biodata"
+                                            value="{{ $siswa->identitas?->anak_ke }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Dari</label>
                                         <input type="number" class="form-control form-control-solid" placeholder="Dari"
-                                            name="dari_biodata" />
+                                            name="dari_biodata" value="{{ $siswa->identitas?->dari }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Agama</label>
@@ -310,7 +323,8 @@
                                             data-control="select2" data-placeholder="Agama">
                                             <option></option>
                                             @foreach (\App\Enums\Agama::cases() as $agama)
-                                                <option value="{{ $agama->value }}">{{ $agama->label() }}
+                                                <option @selected($siswa->identitas?->agama == $agama) value="{{ $agama->value }}">
+                                                    {{ $agama->label() }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -318,32 +332,37 @@
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Suku</label>
                                         <input type="text" class="form-control form-control-solid" placeholder="Suku"
-                                            name="suku_biodata" />
+                                            name="suku_biodata" value="{{ $siswa->identitas?->suku }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Asal Sekolah</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Asal Sekolah" name="asal_sekolah_biodata" />
+                                            placeholder="Asal Sekolah" name="asal_sekolah_biodata"
+                                            value="{{ $siswa->identitas?->asal_sekolah }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">No Ijazah</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="No Ijazah" name="no_ijazah_biodata" />
+                                            placeholder="No Ijazah" name="no_ijazah_biodata"
+                                            value="{{ $siswa->identitas?->no_ijazah }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Berat Badan</label>
                                         <input type="number" class="form-control form-control-solid"
-                                            placeholder="Berat Badan" name="berat_badan_biodata" />
+                                            placeholder="Berat Badan" name="berat_badan_biodata"
+                                            value="{{ $siswa->identitas?->berat_badan }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Tinggi Badan</label>
                                         <input type="number" class="form-control form-control-solid"
-                                            placeholder="Tinggi Badan" name="tinggi_badan_biodata" />
+                                            placeholder="Tinggi Badan" name="tinggi_badan_biodata"
+                                            value="{{ $siswa->identitas?->tinggi_badan }}" />
                                     </div>
                                     <div class="fv-row col-md-6 mb-7">
                                         <label class="required fs-6 fw-semibold mb-2">Riwayat Penyakit</label>
                                         <input type="text" class="form-control form-control-solid"
-                                            placeholder="Riwayat Penyakit" name="riwayat_penyakit_biodata" />
+                                            placeholder="Riwayat Penyakit" name="riwayat_penyakit_biodata"
+                                            value="{{ $siswa->identitas?->riwayat_penyakit }}" />
                                     </div>
                                 </div>
                             </div>
@@ -665,24 +684,6 @@
                             },
                         };
                         break;
-                    case 4:
-                        fields = {
-                            'ktp_orang_tua_file': {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'KTP Orang Tua wajib diisi'
-                                    }
-                                }
-                            },
-                            'ijazah_file': {
-                                validators: {
-                                    notEmpty: {
-                                        message: 'Ijazah wajib diisi'
-                                    }
-                                }
-                            },
-                        };
-                        break;
                 }
                 initVaildate(fields).validate().then(function(status) {
                     if (status == 'Valid') {
@@ -721,7 +722,7 @@
                 var postData = new FormData($("#kt_stepper_example_basic_form")[0]);
                 $.ajax({
                     type: 'POST',
-                    url: `/pendaftaran/store`,
+                    url: `/pendaftaran/{{ $siswa->getKey() }}/update`,
                     processData: false,
                     contentType: false,
                     data: postData,

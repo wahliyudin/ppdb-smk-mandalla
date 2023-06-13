@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nik');
             $table->integer('jumlah_saudara');
             $table->integer('anak_ke');
+            $table->integer('dari');
             $table->enum('agama', [1, 2, 3, 4, 5, 6]);
             $table->string('suku');
             $table->string('asal_sekolah');

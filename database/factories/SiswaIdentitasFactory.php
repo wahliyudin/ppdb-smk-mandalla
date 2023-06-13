@@ -24,6 +24,7 @@ class SiswaIdentitasFactory extends Factory
             'nik' => fake()->randomNumber(),
             'jumlah_saudara' => fake()->randomNumber(),
             'anak_ke' => fake()->randomNumber(),
+            'dari' => fake()->randomNumber(),
             'agama' => fake()->randomElement(Agama::cases()),
             'suku' => fake()->city(),
             'asal_sekolah' => fake()->city(),

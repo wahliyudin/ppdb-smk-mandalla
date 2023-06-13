@@ -15,6 +15,7 @@ class Proses extends Model
         'siswa_id',
         'proses',
         'status',
+        'alasan',
     ];
 
     protected $casts = [
