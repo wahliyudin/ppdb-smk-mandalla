@@ -85,4 +85,5 @@
     <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/pages/pembayaran/index.js') }}"></script>
     <script src="{{ asset('assets/js/pages/pembayaran/create.js') }}"></script>
+    <script src="{{ asset('assets/plugins/custom/fslightbox/fslightbox.bundle.js') }}"></script>
 @endpush
